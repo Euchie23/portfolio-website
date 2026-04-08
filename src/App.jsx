@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
-import headshot from './assets/headshot.JPG';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaFish, FaBiohazard, FaGlobeAmericas, FaHardHat, FaArrowLeft, FaExternalLinkAlt, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { RepoContent } from './RepoContent';
@@ -159,7 +158,7 @@ useEffect(() => {
               <div className="relative w-40 h-40 rounded-2xl overflow-hidden border-2 border-emerald-500/20 shadow-2xl bg-slate-900">
         
               <img 
-                src={headshot} 
+                src="/portfolio-website/headshot.JPG" 
                 alt="Euchie Jn Pierre" 
                 className="w-full h-full object-cover" 
                 onError={handleImageError} 
