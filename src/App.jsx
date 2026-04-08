@@ -157,11 +157,11 @@ useEffect(() => {
             <header className="max-w-6xl mx-auto px-6 pt-20 pb-12 flex flex-col md:flex-row items-center gap-8">
               <div className="relative w-40 h-40 rounded-2xl overflow-hidden border-2 border-emerald-500/20 shadow-2xl bg-slate-900">
               <img
-                  src="/portfolio-website/headshot.JPG"
-                  alt="Euchie Jn Pierre"
-                  className="w-full h-full object-cover"
-                  onError={handleImageError}
-                />
+                src="/headshot.JPG"
+                alt="Euchie Jn Pierre"
+                className="w-full h-full object-cover"
+                onError={handleImageError}
+              />
               </div>
               <div className="text-center md:text-left">
                 <h1 className="text-5xl font-bold mb-2 tracking-tight">Euchie <span className="text-emerald-400">Jn Pierre</span></h1>
