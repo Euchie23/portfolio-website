@@ -262,27 +262,27 @@ export const RepoContent = {
     title: "HSE Risk Intelligence",
     tagline: "Operational Safety & Risk Governance",
 
-    overview: "A risk intelligence platform that structures day-to-day safety data into a connected system for monitoring, analysis, and decision-making. It integrates tasks, hazards, incidents, and corrective actions into a unified framework, enabling organizations to track risk, improve accountability, and support audit-ready safety management. The system is currently in development, with core database architecture and risk workflows implemented, and dashboards planned as the next phase.",
+    overview: "A risk intelligence platform that structures day-to-day safety data into a connected system for monitoring, analysis, and decision-making. It integrates task templates, task executions, hazards, incidents, and corrective actions into a unified framework, enabling organizations to track risk, manage workforce execution, improve accountability, and support audit-ready safety management. The system is currently in development, with core database architecture and risk workflows implemented, and dashboards planned as the next phase.",
 
     technical: [
       "Data: Structured HSE records (tasks, hazards, observations, incidents, attendance, controls)",
-      "Pipeline: data capture → relational linking → risk scoring → control effectiveness evaluation → corrective action tracking → KPI reporting",
+      "Pipeline: data capture → task execution tracking → relational linking → risk scoring → control effectiveness evaluation → corrective action tracking → KPI reporting",
       "Stack: PostgreSQL, normalized relational schema, ERD-driven system design",
       "Methods: Risk scoring (severity × probability), control effectiveness tracking, workflow governance aligned with ISO 45001 & NEBOSH principles"
     ],
 
-    scenario: "In an active industrial environment, multiple tasks are executed daily across zones and phases, each with varying levels of risk exposure. The system structures how hazards are identified, assessed, controlled, and tracked over time. For example, a hazard identified during a task is linked to controls, evaluated for effectiveness, and escalated into corrective actions if risk persists—ensuring full traceability from detection to resolution within a centralized workflow.",
+    scenario: "In an active industrial environment, multiple task executions are carried out daily across zones and phases, often by different teams and contractors, each with varying levels of risk exposure. The system structures how hazards are identified, assessed, controlled, and tracked over time. For example, a hazard identified during a task execution is linked to controls, evaluated for effectiveness, and escalated into corrective actions if risk persists—ensuring full traceability from detection to resolution within a centralized workflow.",
     plots: [
       {
         title: "Risk Intelligence System Architecture",
         description:
-          "Entity Relationship Diagram (ERD) showing how tasks, hazards, controls, incidents, and corrective actions are structurally linked. The system captures the full risk lifecycle—from hazard identification and control implementation to incident response and corrective action tracking—ensuring audit-ready traceability and enabling advanced risk analytics.",
+          "Entity Relationship Diagram (ERD) showing how task templates, task executions, teams, organizations, hazards, controls, incidents, and corrective actions are structurally linked. The system captures the full risk lifecycle—from planned work definition and execution tracking to hazard identification, control implementation, incident response, and corrective action management—ensuring audit-ready traceability and enabling advanced risk analytics.",
         src: hseqERD,   // your ERD image or rendered diagram
         type: "svg"
       }
     ],
     insights: [
-      "Risk is dynamic and must be monitored continuously across task execution, not assessed only at planning stage.",
+      "Risk is dynamic and must be monitored continuously across task executions, not assessed only at the planning stage.",
       "Tracking control effectiveness provides deeper insight than simply recording hazard presence.",
       "Linking observations, incidents, and corrective actions creates full lifecycle visibility and improves accountability.",
       "Structured data enables trend analysis across zones and phases, supporting proactive rather than reactive safety management."
@@ -297,7 +297,7 @@ export const RepoContent = {
       },
       {
         name: "System Design",
-        detail: "Built as a relational risk intelligence system connecting tasks, hazards, controls, incidents, and corrective actions into a unified and traceable workflow."
+        detail: "Built as a relational risk intelligence system connecting task templates, task executions, workforce structures (teams and organizations), hazards, controls, incidents, and corrective actions into a unified and traceable workflow."
       },
       {
         name: "Decision Impact",
