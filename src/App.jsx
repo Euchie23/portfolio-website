@@ -50,83 +50,161 @@ const App = () => {
   const [activeProject, setActiveProject] = useState(null);
   const mermaidRef = useRef(null);
 
-  // Scroll to top when a project is opened
+  // -----------------------------
+  // CACHE (persists across views)
+  // -----------------------------
+  const mermaidCache = useRef({});
+
+  // -----------------------------
+  // INIT MERMAID (RUN ONCE)
+  // -----------------------------
   useEffect(() => {
-    if (activeProject) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [activeProject]);
-
-  // --- Initialize Mermaid diagrams on component mount ---
-  // This ensures any <div className="mermaid"> blocks are rendered as diagrams
-  // useEffect(() => {
-  //   mermaid.initialize({
-  //     startOnLoad: true,   // Automatically render diagrams when detected
-  //     theme: 'dark'        // Match your site's dark UI
-  //   });
-
-  //   // Trigger rendering after component loads
-  //   mermaid.contentLoaded();
-  // }, []);
-
-const mermaidInitialized = useRef(false);
-
-useEffect(() => {
-  if (!mermaidRef.current) return;
-
-  if (!mermaidInitialized.current) {
     mermaid.initialize({
       startOnLoad: false,
       theme: "dark",
       securityLevel: "loose",
     });
-    mermaidInitialized.current = true;
-  }
+  }, []);
 
-  const graphDefinition = `flowchart LR
-    subgraph S1["Data Ingestion"]
-      A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing (netCDF) | Public Data"]
-    end
-
-    subgraph S2["Data Management"]
-      B["PostgreSQL + PostGIS\\nCleaning | Integration | QA/QC | Governance"]
-    end
-
-    subgraph S3["Analytics"]
-      C["R | Python | Statistics | ML"]
-    end
-
-    subgraph S4["Applications"]
-      D["Shiny | Streamlit Apps"]
-    end
-
-    subgraph S5["Stakeholders"]
-      E["Regulators | Consultancies | ESG | HSE"]
-    end
-
-    A --> B --> C --> D --> E
-
-    classDef bigFont font-size:16px, font-family:Arial, font-weight:bold;
-    class A,B,C,D,E bigFont;
-  `;
-
-  const renderDiagram = async () => {
-    try {
-      const { svg } = await mermaid.render(`mermaid-${Date.now()}`, graphDefinition);
-      if (mermaidRef.current) {
-        mermaidRef.current.innerHTML = svg;
-
-        // Store clean SVG string for zoom
-        mermaidRef.current.dataset.svg = svg;
-      }
-    } catch (err) {
-      console.error("Mermaid render error:", err);
+  // -----------------------------
+  // SCROLL TO TOP ON OPEN
+  // -----------------------------
+  useEffect(() => {
+    if (activeProject) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  };
+  }, [activeProject]);
 
-  const timer = setTimeout(renderDiagram, 50);
-  return () => clearTimeout(timer);
-}, []);
+  // -----------------------------
+  // RENDER MERMAID DIAGRAM
+  // -----------------------------
+  useEffect(() => {
+    if (!activeProject) return;
+
+    const graphDefinition = `flowchart LR
+      subgraph S1["Data Ingestion"]
+        A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
+      end
+
+      subgraph S2["Data Management"]
+        B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
+      end
+
+      subgraph S3["Analytics"]
+        C["R | Python | Statistics | ML"]
+      end
+
+      subgraph S4["Applications"]
+        D["Shiny | Streamlit Apps"]
+      end
+
+      subgraph S5["Stakeholders"]
+        E["Regulators | Consultancies | ESG | HSE"]
+      end
+
+      A --> B --> C --> D --> E
+    `;
+
+    let cancelled = false;
+
+    const renderDiagram = async () => {
+      try {
+        // -----------------------------
+        // CACHE CHECK (prevents rerender flicker)
+        // -----------------------------
+        if (mermaidCache.current[activeProject]) {
+          if (mermaidRef.current) {
+            mermaidRef.current.innerHTML =
+              mermaidCache.current[activeProject];
+          }
+          return;
+        }
+
+        const { svg } = await mermaid.render(
+          `mermaid-${activeProject}`,
+          graphDefinition
+        );
+
+        if (cancelled || !mermaidRef.current) return;
+
+        mermaidRef.current.innerHTML = svg;
+        mermaidRef.current.dataset.svg = svg;
+
+        mermaidCache.current[activeProject] = svg;
+      } catch (err) {
+        console.error("Mermaid render error:", err);
+      }
+    };
+
+    requestAnimationFrame(renderDiagram);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeProject]);
+
+//   const renderDiagram = async () => {
+//     try {
+//       const { svg } = await mermaid.render(
+//         `mermaid-${Date.now()}`,
+//         graphDefinition
+//       );
+
+//       mermaidRef.current.innerHTML = svg;
+//       mermaidRef.current.dataset.svg = svg;
+//     } catch (err) {
+//       console.error("Mermaid render error:", err);
+//     }
+//   };
+
+//   const timer = setTimeout(renderDiagram, 50);
+//   return () => clearTimeout(timer);
+// }, [activeProject]);
+
+  // const graphDefinition = `flowchart LR
+  //   subgraph S1["Data Ingestion"]
+  //     A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing (netCDF) | Public Data"]
+  //   end
+
+  //   subgraph S2["Data Management"]
+  //     B["PostgreSQL + PostGIS\\nCleaning | Integration | QA/QC | Governance"]
+  //   end
+
+  //   subgraph S3["Analytics"]
+  //     C["R | Python | Statistics | ML"]
+  //   end
+
+  //   subgraph S4["Applications"]
+  //     D["Shiny | Streamlit Apps"]
+  //   end
+
+  //   subgraph S5["Stakeholders"]
+  //     E["Regulators | Consultancies | ESG | HSE"]
+  //   end
+
+  //   A --> B --> C --> D --> E
+
+  //   classDef bigFont font-size:16px, font-family:Arial, font-weight:bold;
+  //   class A,B,C,D,E bigFont;
+  // `;
+
+//   const renderDiagram = async () => {
+//     try {
+//       const { svg } = await mermaid.render(`mermaid-${Date.now()}`, graphDefinition);
+//       if (mermaidRef.current) {
+//         mermaidRef.current.innerHTML = svg;
+
+//         // Store clean SVG string for zoom
+//         mermaidRef.current.dataset.svg = svg;
+//       }
+//     } catch (err) {
+//       console.error("Mermaid render error:", err);
+//     }
+//   };
+
+//   const timer = setTimeout(renderDiagram, 50);
+//   return () => clearTimeout(timer);
+// }, []);
 
   // This function handles the "Image Hunting" logic
   const handleImageError = (e) => {
@@ -258,20 +336,22 @@ useEffect(() => {
                 {/* Mermaid container */}
                 {/* <div ref={mermaidRef} className="text-sm"></div> */}
                 {/* Mermaid container */}
-                  <div
-                    ref={mermaidRef}
-                    className="cursor-zoom-in"
-                    onClick={(e) => {
-                      const svgString = e.currentTarget.dataset.svg;
-                      if (!svgString) return;
+                <div
+                  ref={mermaidRef}
+                  className="cursor-zoom-in w-full"
+                  onClick={(e) => {
+                    const svgString = e.currentTarget.dataset.svg;
+                    if (!svgString) return;
 
-                      // Open a clean SVG in a new tab
-                      const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
-                      const url = URL.createObjectURL(blob);
-                      window.open(url, "_blank");
-                    }}
-                  />
-                </div>
+                    const blob = new Blob([svgString], {
+                      type: "image/svg+xml;charset=utf-8",
+                    });
+
+                    const url = URL.createObjectURL(blob);
+                    window.open(url, "_blank");
+                  }}
+                />
+              </div>
 
               <p className="text-slate-500 text-xs mt-6 font-mono uppercase tracking-widest">
                 Turning environmental and operational data into defensible, decision-ready risk intelligence
