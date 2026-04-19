@@ -30,37 +30,42 @@ export const RepoContent = {
   squidstack: {
     title: "SquidStack",
     tagline: "Marine Pollution & Risk Intelligence",
-    overview: "A suite of interactive dashboards that transforms marine pollution data into clear signals for ecosystem health and seafood safety. Built from multi-year research, it enables stakeholders to monitor contamination trends, assess risk, and act early.",
+
+    overview: "Translates marine contamination data into human health risk signals (EDI/HQ) for seafood safety and exposure assessment.",
+
+    usedFor: "Used to assess seafood safety risk and quantify population-level exposure under real consumption scenarios.",
+
     technical: [
-      "Data: Multi-year contaminant dataset (simulated, structurally representative)",
-      "Pipeline: QA/QC → exploratory analysis → temporal trends → EDI/HQ risk modeling",
-      "Stack: R (Shiny), ggplot2, dplyr",
-      "Architecture: End-to-end decision-support pipeline from lab validation to risk outputs"
+      "CRM-validated multi-year contaminant datasets (metals + organics)",
+      "EDI / HQ exposure risk modelling pipeline",
+      "R + Shiny interactive analytics dashboards",
+      "End-to-end contamination → risk transformation workflow"
     ],
 
-    scenario: "Simulates dietary exposure for high-consumption adults (95th percentile) using country-specific data (population weight and squid consumption). Argentina and Taiwan are shown as examples, but the model can assess any country with available input data. Contaminant concentrations in squid tissues are translated into Estimated Daily Intake (EDI) and Hazard Quotients (HQ), enabling stakeholders to explore variability across populations, tissues, and geographic regions under adjustable scenarios.",
+    scenario: "Models population-level exposure using country-specific consumption profiles to convert contamination levels into EDI/HQ risk signals.",
+
     plots: [
       {
-        title: "Estimated Daily Intake (EDI) Comparison",
+        title: "Estimated Daily Intake (EDI)",
         description:
-          "Taiwan shows higher EDI across both normal and extreme scenarios due to higher squid consumption rates, indicating elevated exposure risk.",
+          "Taiwan shows consistently higher exposure due to elevated consumption rates, indicating increased population-level risk.",
         src: squidStackEdi
       },
       {
-        title: "Hazard Quotient (HQ) Comparison",
+        title: "Hazard Quotient (HQ)",
         description:
-          "HQ values are consistently higher for Taiwan, with extreme scenarios approaching or exceeding risk thresholds, highlighting population-specific vulnerability.",
+          "Higher HQ values in Taiwan highlight greater vulnerability under both normal and extreme consumption scenarios.",
         src: squidStackHq
       }
     ],
 
     insights: [
-      "Exposure risk varies by country and scenario. Taiwan consistently shows the highest hazard for heavy metals across 2019–2021, with extreme consumption scenarios driving the greatest concern, followed by normal consumption. Argentina exhibits lower risk, though in 2019 extreme exposure for organics slightly exceeds Taiwan’s normal scenario.",
-      "Under normal conditions, both countries show minimal risk from organics, while extreme consumption scenarios reveal emerging priorities, particularly for metals in Taiwan.",
-      "Cross-year trends indicate that hazard patterns are generally stable for metals, with minor year-to-year shifts for organics, supporting targeted monitoring and adaptive risk management."
+      "Taiwan consistently shows higher exposure risk due to consumption intensity.",
+      "Extreme intake scenarios drive hazard escalation for heavy metals.",
+      "Organic contaminants remain low under normal conditions but increase under stress scenarios."
     ],
-    image: placeholderSquidStack,
 
+    image: placeholderSquidStack,
     modules: [
       {
         name: "Decision Context",
@@ -99,41 +104,47 @@ export const RepoContent = {
   squidstock: {
     title: "SquidStock",
     tagline: "Fisheries Analytics & Predictive Insight",
-    overview: "A decision-support platform for squid fisheries that integrates standardized CPUE, mechanistic biomass simulation, and predictive modeling to assess stock dynamics under environmental change. It connects observed catch trends with modeled population responses, helping managers evaluate when CPUE reflects true abundance and when it may mislead decisions.",
+
+    overview: "Separates true biomass dynamics from misleading CPUE signals under climate variability.",
+
+    usedFor: "Used to detect true stock trends and forecast climate-driven shifts in fishery abundance.",
+
     technical: [
-      "Data: Multi-year fisheries dataset (catch records, environmental covariates)",
-      "Pipeline: preprocessing → CPUE standardization → biomass simulation → scenario testing → predictive forecasting",
-      "Stack: Python, Streamlit, pandas, scikit-learn, PyCaret",
-      "Architecture: Modular app-based analytics pipeline integrating mechanistic and machine learning models"
+      "CPUE standardisation across multi-year fisheries datasets",
+      "Mechanistic biomass simulation under +2°C climate scenarios",
+      "Python + Streamlit predictive modelling pipeline",
+      "Hybrid ecological + ML forecasting framework"
     ],
 
-    scenario: "Simulates a squid population starting at ~3 million tons under stable, low fishing pressure. Growth is driven by ocean conditions—especially temperature and productivity—with an assumed optimal temperature range for the species. The model compares baseline conditions with a +2°C warming scenario using a simplified environmental index. It excludes migration, ecosystem interactions, and changing fishing behavior to isolate how environmental change affects biomass and how reliably CPUE reflects those changes.",
+    scenario: "Simulates squid population response under warming conditions to evaluate how reliably CPUE reflects true biomass dynamics.",
+
     plots: [
       {
         title: "Biomass Under Warming Scenarios",
         description:
-          "Simulated biomass diverges under +2°C warming, showing ~10% higher growth relative to baseline. Warming moves environmental temperatures closer to the species’ thermal optimum, though the model ignores migration, upwelling productivity, and ecosystem responses, likely overestimating real-world benefits.",
+          "Warming produces ~10% biomass increase under simplified ecological assumptions, likely representing an upper-bound response.",
         src: biomassScenarios
       },
       {
-        title: "Temperature-Dependent Growth Rate (Time Series)",
+        title: "Temperature-Dependent Growth",
         description:
-         "Orange dashed line shows modeled growth rate (r_t) over time; teal line shows biomass. Growth fluctuates between ~0.01–0.03 depending on proximity to the thermal optimum. Higher r_t (~0.025–0.03) slows biomass decline; lower r_t (~0.01–0.015) accelerates it. Note: this pattern reflects a simplified temperature-driven model and does not include feeding, migration, or stage-specific preferences.",
+          "Growth rate varies with thermal optimum (r ≈ 0.01–0.03), directly influencing biomass stability.",
         src: tempGrowth
       },
       {
-        title: "CPUE vs Biomass Relationship",
+        title: "CPUE vs Biomass",
         description:
-          "Catch per unit effort (CPUE) shows weak correlation with true biomass (correlation ~0.09). Even as biomass declines steadily, CPUE exhibits high variability due to aggregation, short-term environmental changes, and model simplifications. This demonstrates that CPUE is an unreliable standalone proxy for population status.",
+          "Weak correlation (r ≈ 0.09) shows CPUE is an unreliable proxy for true population size under environmental variability.",
         src: cpueScatter
       }
     ],
+
     insights: [
-      "Environmental conditions significantly influence biomass trends, with temperature changes altering growth dynamics over time.",
-      "Warming scenarios increase modeled biomass, but likely represent an upper-bound estimate due to simplified ecological assumptions.",
-      "CPUE is a weak proxy for true abundance, as catch rates are influenced by aggregation and fishing dynamics.",
-      "Combining standardized CPUE with environmental modeling improves reliability for interpreting stock trends and supporting management decisions."
+      "Temperature is the primary driver of biomass variation in the model.",
+      "CPUE is an unreliable proxy for true population size.",
+      "Warming scenarios likely overestimate real-world growth."
     ],
+
     image: placeholderSquidStock,
     modules: [
       {
@@ -172,57 +183,60 @@ export const RepoContent = {
     ]
   },
 
+
   geotentacles: {
-  title: "GeoTentacles",
-  tagline: "Spatial Marine Intelligence & Decision Support",
-  overview: "GeoTentacles is a suite of interactive spatial analytics tools that turn scattered marine and environmental data into actionable insights. The platform integrates monitoring, ecosystem assessment, and predictive modeling to help managers prioritize interventions, assess risk, and plan operations effectively.",
+    title: "GeoTentacles",
+    tagline: "Spatial Marine Intelligence & Decision Support",
 
-  technical: [
-    "Data: Multi-year environmental, pollution, and fisheries datasets",
-    "Pipeline: preprocessing → spatial analytics → predictive modeling → scenario evaluation",
-    "Stack: Python, R, PostGIS, Folium, Streamlit, Shiny, scikit-learn",
-    "Models: Random Forest for ecological and operational hotspot prediction; ElasticNet regression for pollution and environmental intensity forecasting",
-    "Architecture: Modular app-based platform combining monitoring, prediction, and decision-support modules"
-  ],
+    overview: "Transforms fragmented environmental data into spatial risk maps for pollution and ecosystem health.",
 
-  scenario: "MarineScope, part of the GeoTentacles platform, provides spatially-interpretable insights into marine ecosystem condition. The platform highlights areas of elevated pollutant risk (Toxic Tide Mapping), aggregates scattered biological and environmental observations into a continuous ecosystem health metric (EcoPulse Index), and assesses ecosystem responses to human activity disruptions, such as COVID-related changes (Disruption Dynamics). Together, these visualizations guide monitoring, resource prioritization, and evidence-based decision-making in complex marine environments.",
-  plots: [
-    {
-      title: "Toxic Tide Mapping — Metal_A Screening",
-      description:
-        "Spatial grid showing model-predicted concentrations of Metal_A using the environment-only model. Risk levels range from low to high, highlighting priority areas for monitoring and mitigation. Supports early-stage screening and spatial prioritization for marine management decisions.",
-      src: toxicTideMapping // replace with your imported image variable
-    },
-    {
-      title: "EcoPulse Index — Marine Health Overview",
-      description:
-        "Aggregated sampling locations visualized by EcoPulse Index, a spatial metric integrating pollution exposure and biological condition. Color-coded points indicate stress-to-resilience gradients, providing decision-makers a clear view of ecosystem condition and areas for follow-up action.",
-      src: ecoPulseIndex // replace with your imported image variable
-    },
-    {
-      title: "Ecosystem Response — Pre/Post COVID",
-      description:
-        "Bar chart comparing marine ecosystem condition using EcoPulse Index before and after COVID-19. Shows a modest decline in ecosystem health post-COVID, highlighting regional sensitivity and supporting evidence-based monitoring and management decisions.",
-      src: disruptionEcosystem // replace with your imported image variable
-    },
-    {
-      title: "Human Pressure Contributions — Pre/Post COVID",
-      description:
-        "Bar chart showing relative contributions of industrial and agricultural pressures to ecosystem condition before and after COVID-19. Highlights dominant stressors and informs decision-making for targeted interventions and resource allocation.",
-      src: disruptionPressure // replace with your imported image variable
-    }
-  ],
+    usedFor: "Used to identify pollution hotspots and prioritise spatial environmental risk interventions.",
 
-  insights: [
-    "Aggregates sparse observations into clear, spatially-interpretable insights for decision-making.",
-    "Predictive models highlight likely hotspots for both ecological risk and operational focus.",
-    "Integration of historical and current spatial data supports scenario-informed resource allocation.",
-    "Interactive visualizations using Folium and Streamlit improve stakeholder communication and rapid operational planning."
-  ],
+    technical: [
+      "Multi-source environmental + fisheries datasets",
+      "Spatial interpolation (IDW) + Random Forest hotspot prediction",
+      "PostGIS geospatial database pipeline",
+      "Python + Folium + Streamlit spatial analytics system"
+    ],
 
-  image: placeholderGeoTentacles,
+    scenario: "Maps pollution gradients and ecosystem health patterns to identify high-risk marine zones and environmental stress areas.",
 
-  modules: [
+    plots: [
+      {
+        title: "Toxic Tide Mapping",
+        description:
+          "Spatial model identifies pollutant hotspots for early-stage environmental risk prioritisation.",
+        src: toxicTideMapping
+      },
+      {
+        title: "EcoPulse Index",
+        description:
+          "Combines biological and pollution signals into a continuous ecosystem health gradient.",
+        src: ecoPulseIndex
+      },
+      {
+        title: "Ecosystem Response (COVID)",
+        description:
+          "Shows modest post-COVID decline in ecosystem health, indicating environmental sensitivity.",
+        src: disruptionEcosystem
+      },
+      {
+        title: "Human Pressure Contributions",
+        description:
+          "Shifts in industrial vs agricultural pressure highlight dominant environmental stress drivers.",
+        src: disruptionPressure
+      }
+    ],
+
+    insights: [
+      "Sparse environmental data is transformed into continuous, decision-ready risk surfaces.",
+      "Hotspot models identify priority monitoring zones.",
+      "Ecosystem health indices reveal spatial stress gradients."
+    ],
+
+    image: placeholderGeoTentacles,
+
+    modules: [
     {
       name: "Decision Context",
       detail: "Helps stakeholders understand where risk, environmental stress, and resource value intersect in marine systems."
@@ -262,30 +276,34 @@ export const RepoContent = {
     title: "HSE Risk Intelligence",
     tagline: "Operational Safety & Risk Governance",
 
-    overview: "A risk intelligence platform that structures day-to-day safety data into a connected system for monitoring, analysis, and decision-making. It integrates task templates, task executions, hazards, incidents, and corrective actions into a unified framework, enabling organizations to track risk, manage workforce execution, improve accountability, and support audit-ready safety management. The system is currently in development, with core database architecture and risk workflows implemented, and dashboards planned as the next phase.",
+    overview: "Connects daily industrial operations to traceable risk, incidents, and corrective actions in a structured safety system.",
+
+    usedFor: "Used to track operational risk in real time and maintain audit-ready safety compliance.",
 
     technical: [
-      "Data: Structured HSE records (tasks, hazards, observations, incidents, attendance, controls)",
-      "Pipeline: data capture → task execution tracking → relational linking → risk scoring → control effectiveness evaluation → corrective action tracking → KPI reporting",
-      "Stack: PostgreSQL, normalized relational schema, ERD-driven system design",
-      "Methods: Risk scoring (severity × probability), control effectiveness tracking, workflow governance aligned with ISO 45001 & NEBOSH principles"
+      "Relational HSE database (tasks, hazards, incidents, controls)",
+      "Risk scoring system (severity × likelihood)",
+      "PostgreSQL + ERD-driven architecture",
+      "ISO 45001-aligned safety governance framework"
     ],
 
-    scenario: "In an active industrial environment, multiple task executions are carried out daily across zones and phases, often by different teams and contractors, each with varying levels of risk exposure. The system structures how hazards are identified, assessed, controlled, and tracked over time. For example, a hazard identified during a task execution is linked to controls, evaluated for effectiveness, and escalated into corrective actions if risk persists—ensuring full traceability from detection to resolution within a centralized workflow.",
+    scenario: "Tracks how hazards emerge during operations and propagate through controls, incidents, and corrective actions in industrial environments.",
+
     plots: [
       {
-        title: "Risk Intelligence System Architecture",
+        title: "Risk Intelligence Architecture",
         description:
-          "Entity Relationship Diagram (ERD) showing how task templates, task executions, teams, organizations, hazards, controls, incidents, and corrective actions are structurally linked. The system captures the full risk lifecycle—from planned work definition and execution tracking to hazard identification, control implementation, incident response, and corrective action management—ensuring audit-ready traceability and enabling advanced risk analytics.",
-        src: hseqERD,   // your ERD image or rendered diagram
+          "ERD showing full risk lifecycle from tasks to hazards, controls, incidents, and corrective actions in an auditable system.",
+        src: hseqERD,
         type: "svg"
       }
     ],
+
     insights: [
-      "Risk is dynamic and must be monitored continuously across task executions, not assessed only at the planning stage.",
-      "Tracking control effectiveness provides deeper insight than simply recording hazard presence.",
-      "Linking observations, incidents, and corrective actions creates full lifecycle visibility and improves accountability.",
-      "Structured data enables trend analysis across zones and phases, supporting proactive rather than reactive safety management."
+      "Operational risk emerges during execution, not just at planning stage.",
+      "Control effectiveness is critical to safety performance.",
+      "Full traceability enables audit-ready safety systems.",
+      "Structured workflows support proactive risk management."
     ],
 
     image: placeholderHSEQ,

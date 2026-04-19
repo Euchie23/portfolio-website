@@ -178,7 +178,7 @@ useEffect(() => {
             <section className="max-w-6xl mx-auto px-6 mb-24 mt-16">
               {/* The "Power Line" - Adjusted Size */}
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100 mb-10 leading-tight">
-                I build <span className="text-emerald-400">risk-aware, decision-support tools</span> that turn complex data into early warnings and <span className="text-emerald-400 italic">defensible insights</span>.
+                I build <span className="text-emerald-400">risk-aware decision-support systems</span> that turn complex environmental and operational data into <span className="text-emerald-400 italic">defensible, decision-ready insights</span>.
               </h1>
 
               {/* Quick Context / Location */}
@@ -188,6 +188,47 @@ useEffect(() => {
                 <span>HSE-Q Risk Analyst</span>
                 <span className="text-slate-800">|</span>
                 <span>Saint Lucia — Taiwan</span>
+              </div>
+            </section>
+
+            {/* --- FEATURED PROJECT --- */}
+            <section className="max-w-6xl mx-auto px-6 mb-24">
+              <h3 className="text-emerald-500 font-mono text-[14px] uppercase tracking-[0.3em] mb-6 relative after:block after:w-full after:h-px after:bg-emerald-500 after:opacity-50 after:mt-2">
+                Featured Project
+              </h3>
+
+              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/40 transition-all">
+                
+                <h2 className="text-2xl font-bold text-white mb-3">
+                  Biomass Simulator — Climate Risk Tool
+                </h2>
+
+                <p className="text-slate-400 text-sm mb-6 max-w-2xl leading-relaxed">
+                  Simulates how squid populations respond to ocean warming scenarios (+2°C), supporting fisheries risk assessment and climate-informed planning.
+                </p>
+
+                <ul className="text-slate-300 text-sm space-y-2 mb-6">
+                  <li>• Models biomass response under climate scenarios</li>
+                  <li>• Links environmental conditions to population dynamics</li>
+                  <li>• Supports early-stage ecological risk evaluation</li>
+                </ul>
+
+                <div className="flex gap-4">
+                  <a
+                    href="https://squidstock-ocean-dynamics.streamlit.app"
+                    target="_blank"
+                    className="px-5 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20 transition text-sm font-semibold"
+                  >
+                    Launch App
+                  </a>
+
+                  <button
+                    onClick={() => setActiveProject("squidstock")}
+                    className="px-5 py-2 rounded-lg border border-slate-700 text-slate-300 hover:border-emerald-500/40 hover:text-emerald-400 transition text-sm font-semibold"
+                  >
+                    View Case Study
+                  </button>
+                </div>
               </div>
             </section>
 
@@ -232,7 +273,7 @@ useEffect(() => {
                 </div>
 
               <p className="text-slate-500 text-xs mt-6 font-mono uppercase tracking-widest">
-                From raw data to defensible decisions in high-uncertainty environments.
+                Turning environmental and operational data into defensible, decision-ready risk intelligence
               </p>
             </section>
 
@@ -252,6 +293,9 @@ useEffect(() => {
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Executed an <span className="font-bold text-slate-200">end-to-end 3-year study</span> (NTU) identifying COVID-19 reprieve signals and conducting <span className="font-bold text-slate-200">Human Health Risk Evaluations (EDI/HQ)</span>.
                     </p>
+                    <p className="text-emerald-400 text-xs mt-2">
+                      Used for: assessing human health exposure and seafood safety risk.
+                    </p>
                   </div>
 
                   {/* Pillar 3: Fisheries Dynamics */}
@@ -259,6 +303,9 @@ useEffect(() => {
                     <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Fisheries Dynamics</h3>
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Modeling a <span className="font-bold text-slate-200">21-year dataset</span> to establish historical baselines and simulate <span className="font-bold text-slate-200">biomass shifts</span> under +2°C climate warming scenarios.
+                    </p>
+                    <p className="text-emerald-400 text-xs mt-2">
+                      Used for: stock assessment and forecasting under environmental variability.
                     </p>
                   </div>
 
@@ -268,6 +315,9 @@ useEffect(() => {
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Building <span className="font-bold text-slate-200">PostGIS & Python</span> pipelines. Modeling industrial <span className="font-bold text-slate-200">pollution plumes</span> and <span className="font-bold text-slate-200">biological hotspots</span> to identify spatial risk overlap.
                     </p>
+                    <p className="text-emerald-400 text-xs mt-2">
+                      Used for: identifying pollution hotspots and ecological risk overlap.
+                    </p>
                   </div>
 
                   {/* Pillar 1: Industrial HSE-Q */}
@@ -275,6 +325,9 @@ useEffect(() => {
                     <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Industrial HSE-Q</h3>
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Designing <span className="font-bold text-slate-200">ISO 45001</span> compliant architectures for Oil & Gas. Transforming field safety into <span className="font-bold text-slate-200">audit-ready risk intelligence</span> for high-stakes operations.
+                    </p>
+                    <p className="text-emerald-400 text-xs mt-2">
+                      Used for: structuring field data into audit-ready risk intelligence.
                     </p>
                   </div>
 
@@ -310,10 +363,10 @@ useEffect(() => {
               {/* --- Squid Fest Suite --- */}
               <section>
                 <h3 className="text-emerald-500 font-mono text-[14px] uppercase tracking-[0.3em] mb-6 relative after:block after:w-full after:h-px after:bg-emerald-500 after:opacity-50 after:mt-2">
-                  Featured Projects
+                  Decision Intelligence Systems (Projects)
                 </h3>
                 <h3 className="text-emerald-500 font-mono text-xs uppercase tracking-[0.3em] mb-4">
-                  Squid Fest Suite
+                  Environmental Decision Systems
                 </h3>
                 <p className="text-slate-400 text-sm mb-6">
                   Tools for monitoring marine ecosystems, fisheries dynamics, and spatial intelligence.
