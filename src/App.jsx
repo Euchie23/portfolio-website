@@ -79,72 +79,73 @@ const App = () => {
   // RENDER MERMAID DIAGRAM
   // -----------------------------
   useEffect(() => {
-  if (!activeProject) return;
+    const container = mermaidRef.current;
+    if (!container) return;
 
-  const graphDefinition = `flowchart LR
-    subgraph S1["Data Ingestion"]
-      A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
-    end
+    const graphDefinition = `
+      flowchart LR
+        subgraph S1["Data Ingestion"]
+          A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
+        end
 
-    subgraph S2["Data Management"]
-      B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
-    end
+        subgraph S2["Data Management"]
+          B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
+        end
 
-    subgraph S3["Analytics"]
-      C["R | Python | Statistics | ML"]
-    end
+        subgraph S3["Analytics"]
+          C["R | Python | Statistics | ML"]
+        end
 
-    subgraph S4["Applications"]
-      D["Shiny | Streamlit Apps"]
-    end
+        subgraph S4["Applications"]
+          D["Shiny | Streamlit Apps"]
+        end
 
-    subgraph S5["Stakeholders"]
-      E["Regulators | Consultancies | ESG | HSE"]
-    end
+        subgraph S5["Stakeholders"]
+          E["Regulators | Consultancies | ESG | HSE"]
+        end
 
-    A --> B --> C --> D --> E
-  `;
+        A --> B --> C --> D --> E
+    `;
 
-  let cancelled = false;
+    let cancelled = false;
 
-  const renderDiagram = async () => {
-    try {
-      if (!mermaidRef.current) return;
+    const render = async () => {
+      try {
+        const cacheKey = "main-diagram";
 
-      const cacheKey = activeProject;
+        // serve cache instantly (no flicker)
+        if (mermaidCache.current[cacheKey]) {
+          container.innerHTML = mermaidCache.current[cacheKey];
+          container.dataset.svg = mermaidCache.current[cacheKey];
+          return;
+        }
 
-      // ---------------- CACHE HIT ----------------
-      if (mermaidCache.current[cacheKey]) {
-        mermaidRef.current.innerHTML = mermaidCache.current[cacheKey];
-        return;
+        const { svg } = await mermaid.render(
+          `mermaid-${Date.now()}`,
+          graphDefinition
+        );
+
+        if (cancelled || !container) return;
+
+        container.innerHTML = svg;
+        container.dataset.svg = svg;
+
+        mermaidCache.current[cacheKey] = svg;
+      } catch (err) {
+        console.error("Mermaid render error:", err);
       }
+    };
 
-      const { svg } = await mermaid.render(
-        `mermaid-${cacheKey}`,
-        graphDefinition
-      );
+    // IMPORTANT: wait for DOM paint after Framer Motion mount
+    const frame = requestAnimationFrame(() => {
+      requestAnimationFrame(render);
+    });
 
-      if (cancelled || !mermaidRef.current) return;
-
-      mermaidRef.current.innerHTML = svg;
-      mermaidRef.current.dataset.svg = svg;
-
-      mermaidCache.current[cacheKey] = svg;
-    } catch (err) {
-      console.error("Mermaid render error:", err);
-    }
-  };
-
-  // 🔥 CRITICAL FIX: wait for DOM paint AFTER Framer Motion transition
-  const frame = requestAnimationFrame(() => {
-    requestAnimationFrame(renderDiagram);
-  });
-
-  return () => {
-    cancelled = true;
-    cancelAnimationFrame(frame);
-  };
-}, [activeProject]);
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+    };
+  }, [activeProject]);
 
 //   const renderDiagram = async () => {
 //     try {
@@ -337,23 +338,23 @@ const App = () => {
                     E[End Users<br/>Regulators, Consultancies, ESG, HSE]`}
                 </div> */}
                 {/* Mermaid container */}
-                {/* <div ref={mermaidRef} className="text-sm"></div> */}
-                {/* Mermaid container */}
-                <div
-                  ref={mermaidRef}
-                  className="cursor-zoom-in w-full"
-                  onClick={(e) => {
-                    const svgString = e.currentTarget.dataset.svg;
-                    if (!svgString) return;
+                {!activeProject && (
+                  <div
+                    ref={mermaidRef}
+                    className="cursor-zoom-in w-full"
+                    onClick={(e) => {
+                      const svgString = e.currentTarget.dataset.svg;
+                      if (!svgString) return;
 
-                    const blob = new Blob([svgString], {
-                      type: "image/svg+xml;charset=utf-8",
-                    });
+                      const blob = new Blob([svgString], {
+                        type: "image/svg+xml;charset=utf-8",
+                      });
 
-                    const url = URL.createObjectURL(blob);
-                    window.open(url, "_blank");
-                  }}
-                />
+                      const url = URL.createObjectURL(blob);
+                      window.open(url, "_blank");
+                    }}
+                  />
+                )}
               </div>
 
               <p className="text-slate-500 text-xs mt-6 font-mono uppercase tracking-widest">
