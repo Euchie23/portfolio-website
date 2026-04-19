@@ -79,69 +79,72 @@ const App = () => {
   // RENDER MERMAID DIAGRAM
   // -----------------------------
   useEffect(() => {
-    if (!activeProject) return;
+  if (!activeProject) return;
 
-    const graphDefinition = `flowchart LR
-      subgraph S1["Data Ingestion"]
-        A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
-      end
+  const graphDefinition = `flowchart LR
+    subgraph S1["Data Ingestion"]
+      A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
+    end
 
-      subgraph S2["Data Management"]
-        B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
-      end
+    subgraph S2["Data Management"]
+      B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
+    end
 
-      subgraph S3["Analytics"]
-        C["R | Python | Statistics | ML"]
-      end
+    subgraph S3["Analytics"]
+      C["R | Python | Statistics | ML"]
+    end
 
-      subgraph S4["Applications"]
-        D["Shiny | Streamlit Apps"]
-      end
+    subgraph S4["Applications"]
+      D["Shiny | Streamlit Apps"]
+    end
 
-      subgraph S5["Stakeholders"]
-        E["Regulators | Consultancies | ESG | HSE"]
-      end
+    subgraph S5["Stakeholders"]
+      E["Regulators | Consultancies | ESG | HSE"]
+    end
 
-      A --> B --> C --> D --> E
-    `;
+    A --> B --> C --> D --> E
+  `;
 
-    let cancelled = false;
+  let cancelled = false;
 
-    const renderDiagram = async () => {
-      try {
-        // -----------------------------
-        // CACHE CHECK (prevents rerender flicker)
-        // -----------------------------
-        if (mermaidCache.current[activeProject]) {
-          if (mermaidRef.current) {
-            mermaidRef.current.innerHTML =
-              mermaidCache.current[activeProject];
-          }
-          return;
-        }
+  const renderDiagram = async () => {
+    try {
+      if (!mermaidRef.current) return;
 
-        const { svg } = await mermaid.render(
-          `mermaid-${activeProject}`,
-          graphDefinition
-        );
+      const cacheKey = activeProject;
 
-        if (cancelled || !mermaidRef.current) return;
-
-        mermaidRef.current.innerHTML = svg;
-        mermaidRef.current.dataset.svg = svg;
-
-        mermaidCache.current[activeProject] = svg;
-      } catch (err) {
-        console.error("Mermaid render error:", err);
+      // ---------------- CACHE HIT ----------------
+      if (mermaidCache.current[cacheKey]) {
+        mermaidRef.current.innerHTML = mermaidCache.current[cacheKey];
+        return;
       }
-    };
 
+      const { svg } = await mermaid.render(
+        `mermaid-${cacheKey}`,
+        graphDefinition
+      );
+
+      if (cancelled || !mermaidRef.current) return;
+
+      mermaidRef.current.innerHTML = svg;
+      mermaidRef.current.dataset.svg = svg;
+
+      mermaidCache.current[cacheKey] = svg;
+    } catch (err) {
+      console.error("Mermaid render error:", err);
+    }
+  };
+
+  // 🔥 CRITICAL FIX: wait for DOM paint AFTER Framer Motion transition
+  const frame = requestAnimationFrame(() => {
     requestAnimationFrame(renderDiagram);
+  });
 
-    return () => {
-      cancelled = true;
-    };
-  }, [activeProject]);
+  return () => {
+    cancelled = true;
+    cancelAnimationFrame(frame);
+  };
+}, [activeProject]);
 
 //   const renderDiagram = async () => {
 //     try {
