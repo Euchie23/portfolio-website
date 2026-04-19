@@ -222,12 +222,13 @@ useEffect(() => {
                     Launch App
                   </a>
 
-                  <button
-                    onClick={() => setActiveProject("squidstock")}
+                  <a
+                    href= "https://github.com/Euchie23/SquidStock/blob/main/Case_Study.md"
+                    target="_blank"
                     className="px-5 py-2 rounded-lg border border-slate-700 text-slate-300 hover:border-emerald-500/40 hover:text-emerald-400 transition text-sm font-semibold"
                   >
                     View Case Study
-                  </button>
+                  </a>
                 </div>
               </div>
             </section>
@@ -456,7 +457,7 @@ useEffect(() => {
                   {/* --- USED FOR SECTION--- */}
                   <section>
                     <h4 className="text-emerald-500 font-mono text-xs uppercase mb-6 tracking-[0.2em] border-b border-emerald-500/20 pb-2">
-                      Used For
+                      Purpose
                     </h4>
 
                     <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-6">
