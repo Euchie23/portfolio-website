@@ -167,10 +167,6 @@ const App = () => {
 
   waitForMountAndRender();
 
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(frame);
-    };
   }, [activeProject, diagramKey]);
 
 //   const renderDiagram = async () => {
