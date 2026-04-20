@@ -48,6 +48,7 @@ function ExpandableImage({ src, alt, description, title }) {
 
 const App = () => {
   const [activeProject, setActiveProject] = useState(null);
+  const [viewKey, setViewKey] = useState(0);
   const [diagramKey, setDiagramKey] = useState(0); //
   const mermaidRef = useRef(null);
 
@@ -80,94 +81,74 @@ const App = () => {
   // RENDER MERMAID DIAGRAM
   // -----------------------------
   useEffect(() => {
-    const container = mermaidRef.current;
-    if (!container) return;
+  if (activeProject) return;
 
-    // ✅ ADD THIS LINE
-    container.innerHTML = "";
+  const container = mermaidRef.current;
+  if (!container) return;
 
-    const graphDefinition = `
-      flowchart LR
-        subgraph S1["Data Ingestion"]
-          A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
-        end
+  let cancelled = false;
 
-        subgraph S2["Data Management"]
-          B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
-        end
+  const graphDefinition = `
+    flowchart LR
+      subgraph S1["Data Ingestion"]
+        A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
+      end
 
-        subgraph S3["Analytics"]
-          C["R | Python | Statistics | ML"]
-        end
+      subgraph S2["Data Management"]
+        B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
+      end
 
-        subgraph S4["Applications"]
-          D["Shiny | Streamlit Apps"]
-        end
+      subgraph S3["Analytics"]
+        C["R | Python | Statistics | ML"]
+      end
 
-        subgraph S5["Stakeholders"]
-          E["Regulators | Consultancies | ESG | HSE"]
-        end
+      subgraph S4["Applications"]
+        D["Shiny | Streamlit Apps"]
+      end
 
-        A --> B --> C --> D --> E
-    `;
+      subgraph S5["Stakeholders"]
+        E["Regulators | Consultancies | ESG | HSE"]
+      end
 
-    let cancelled = false;
+      A --> B --> C --> D --> E
+  `;
 
-    const render = async () => {
-      try {
-        const cacheKey = "main-diagram";
+  const render = async () => {
+    try {
+      const cacheKey = "main-diagram";
 
-        let svg;
+      let svg;
 
-        if (mermaidCache.current[cacheKey]) {
-          svg = mermaidCache.current[cacheKey];
-        } else {
-          const result = await mermaid.render(
-            `mermaid-${Date.now()}`,
-            graphDefinition
-          );
-          svg = result.svg;
-          mermaidCache.current[cacheKey] = svg;
-        }
+      if (mermaidCache.current[cacheKey]) {
+        svg = mermaidCache.current[cacheKey];
+      } else {
+        const result = await mermaid.render(
+          `mermaid-${Date.now()}`,
+          graphDefinition
+        );
 
-        if (cancelled || !container) return;
-
-        // ✅ ALWAYS inject into DOM (this is the fix)
-        container.innerHTML = svg;
-        container.dataset.svg = svg;
-
-      } catch (err) {
-        console.error("Mermaid render error:", err);
+        svg = result.svg;
+        mermaidCache.current[cacheKey] = svg;
       }
-    };
 
-    // IMPORTANT: wait for DOM paint after Framer Motion mount
-  const waitForMountAndRender = () => {
-    if (!container) return;
+      if (cancelled || !container) return;
 
-    // If already visible, render immediately
-    if (container.offsetParent !== null) {
-      render();
-      return;
+      container.innerHTML = svg;
+      container.dataset.svg = svg;
+
+    } catch (err) {
+      console.error("Mermaid render error:", err);
     }
-
-    // Otherwise observe until it becomes visible
-    const observer = new MutationObserver(() => {
-      if (container.offsetParent !== null) {
-        observer.disconnect();
-        render();
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
   };
 
-  waitForMountAndRender();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(render);
+  });
 
-  }, [activeProject, diagramKey]);
+  return () => {
+    cancelled = true;
+  };
+}, [viewKey]);
 
 //   const renderDiagram = async () => {
 //     try {
@@ -301,7 +282,19 @@ const App = () => {
                 Featured Project
               </h3>
 
-              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/40 transition-all">
+              <div
+                className="relative rounded-2xl border border-slate-800 p-8 overflow-hidden hover:border-emerald-500/40 transition-all"
+                style={{
+                  backgroundImage: "url('/images/squidstockapp.png')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {/* dark overlay for readability */}
+                <div className="absolute inset-0 bg-slate-950/80" />
+
+                {/* content layer */}
+                <div className="relative z-10">
                 
                 <h2 className="text-2xl font-bold text-white mb-3">
                   Biomass Simulator — Climate Risk Tool
@@ -335,6 +328,7 @@ const App = () => {
                   </a>
                 </div>
               </div>
+            </div>
             </section>
 
             {/* --- DECISION SUPPORT ARCHITECTURE --- */}
@@ -527,7 +521,7 @@ const App = () => {
               <button 
                 onClick={() => {
                   setActiveProject(null);
-                  setDiagramKey(prev => prev + 1);
+                  setViewKey(prev => prev + 1);
                 }}
                 className="
                   flex items-center gap-2
