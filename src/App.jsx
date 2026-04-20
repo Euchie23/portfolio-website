@@ -117,24 +117,25 @@ const App = () => {
       try {
         const cacheKey = "main-diagram";
 
-        // serve cache instantly (no flicker)
-        if (mermaidCache.current[cacheKey]) {
-          container.innerHTML = mermaidCache.current[cacheKey];
-          container.dataset.svg = mermaidCache.current[cacheKey];
-          return;
-        }
+        let svg;
 
-        const { svg } = await mermaid.render(
-          `mermaid-${Date.now()}`,
-          graphDefinition
-        );
+        if (mermaidCache.current[cacheKey]) {
+          svg = mermaidCache.current[cacheKey];
+        } else {
+          const result = await mermaid.render(
+            `mermaid-${Date.now()}`,
+            graphDefinition
+          );
+          svg = result.svg;
+          mermaidCache.current[cacheKey] = svg;
+        }
 
         if (cancelled || !container) return;
 
+        // ✅ ALWAYS inject into DOM (this is the fix)
         container.innerHTML = svg;
         container.dataset.svg = svg;
 
-        mermaidCache.current[cacheKey] = svg;
       } catch (err) {
         console.error("Mermaid render error:", err);
       }
@@ -382,9 +383,6 @@ const App = () => {
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Executed an <span className="font-bold text-slate-200">end-to-end 3-year study</span> (NTU) identifying COVID-19 reprieve signals and conducting <span className="font-bold text-slate-200">Human Health Risk Evaluations (EDI/HQ)</span>.
                     </p>
-                    <p className="text-emerald-400 text-xs mt-2">
-                      Used for: assessing human health exposure and seafood safety risk.
-                    </p>
                   </div>
 
                   {/* Pillar 3: Fisheries Dynamics */}
@@ -404,9 +402,6 @@ const App = () => {
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Building <span className="font-bold text-slate-200">PostGIS & Python</span> pipelines. Modeling industrial <span className="font-bold text-slate-200">pollution plumes</span> and <span className="font-bold text-slate-200">biological hotspots</span> to identify spatial risk overlap.
                     </p>
-                    <p className="text-emerald-400 text-xs mt-2">
-                      Used for: identifying pollution hotspots and ecological risk overlap.
-                    </p>
                   </div>
 
                   {/* Pillar 1: Industrial HSE-Q */}
@@ -415,9 +410,7 @@ const App = () => {
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Designing <span className="font-bold text-slate-200">ISO 45001</span> compliant architectures for Oil & Gas. Transforming field safety into <span className="font-bold text-slate-200">audit-ready risk intelligence</span> for high-stakes operations.
                     </p>
-                    <p className="text-emerald-400 text-xs mt-2">
-                      Used for: structuring field data into audit-ready risk intelligence.
-                    </p>
+
                   </div>
 
                 </div>
@@ -516,20 +509,21 @@ const App = () => {
           {/* ✅ RESTORE THIS WRAPPER */}
           <div className="max-w-5xl mx-auto px-6 py-16">
 
-            <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-16">
               <button 
                 onClick={() => {
                   setActiveProject(null);
                   setDiagramKey(prev => prev + 1);
                 }}
                 className="
-                  flex items-center gap-3
-                  bg-red-500/15 hover:bg-red-500/25
-                  text-red-300
-                  text-xl font-bold font-mono
-                  px-10 py-5
-                  rounded-xl
-                  shadow-lg shadow-red-500/10
+                  flex items-center gap-2
+                  bg-red-500/10 hover:bg-red-500/20
+                  text-red-400
+                  text-sm font-semibold font-mono
+                  px-5 py-2.5
+                  rounded-lg
+                  border border-red-500/30
+                  hover:border-red-400
                   transition-all
                 "
               >
