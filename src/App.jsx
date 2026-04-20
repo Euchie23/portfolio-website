@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaFish, FaBiohazard, FaGlobeAmericas, FaHardHat, FaArrowLeft, FaExternalLinkAlt, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { RepoContent } from './RepoContent';
 import { BentoGrid } from "./components/BentoGrid";
+import biomassImg from "./images/squidstockapp.png";
 
 
 // ------------------- SVG Expandable COMPONENT -------------------
@@ -284,11 +285,11 @@ const App = () => {
 
               <div
                 className="relative rounded-2xl border border-slate-800 p-8 overflow-hidden hover:border-emerald-500/40 transition-all"
-                style={{
-                  backgroundImage: "url('/images/squidstockapp.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
+                  style={{
+                    backgroundImage: `url(${biomassImg})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
               >
                 {/* dark overlay for readability */}
                 <div className="absolute inset-0 bg-slate-950/80" />
@@ -356,6 +357,7 @@ const App = () => {
                 {/* Mermaid container */}
                 {!activeProject && (
                   <div
+                    key={activeProject ? "detail" : "home"}
                     ref={mermaidRef}
                     className="cursor-zoom-in w-full"
                     onClick={(e) => {
