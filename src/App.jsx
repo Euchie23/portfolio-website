@@ -513,6 +513,9 @@ const App = () => {
             className="fixed inset-0 overflow-auto bg-slate-950 z-50"
           >
 
+          {/* ✅ RESTORE THIS WRAPPER */}
+          <div className="max-w-5xl mx-auto px-6 py-16">
+
             <div className="flex justify-center mb-12">
               <button 
                 onClick={() => {
@@ -535,7 +538,7 @@ const App = () => {
               </button>
             </div>
 
-              <div className="mb-16">
+            <div className="mb-16">
                 <h2 className="text-6xl font-extrabold mb-4 tracking-tighter">{RepoContent[activeProject].title}</h2>
                 <p className="text-2xl text-emerald-400/80 font-light">{RepoContent[activeProject].tagline}</p>
                 {/* <img
