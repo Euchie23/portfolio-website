@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaFish, FaBiohazard, FaGlobeAmericas, FaHardHat, FaArrowLeft, FaExternalLinkAlt, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { RepoContent } from './RepoContent';
 import { BentoGrid } from "./components/BentoGrid";
-import biomassImg from "./images/squidstockapp.png";
+import biomassImg from "./images/squids.jpg";
 
 
 // ------------------- SVG Expandable COMPONENT -------------------
@@ -49,9 +49,9 @@ function ExpandableImage({ src, alt, description, title }) {
 
 const App = () => {
   const [activeProject, setActiveProject] = useState(null);
-  const [viewKey, setViewKey] = useState(0);
-  const [diagramKey, setDiagramKey] = useState(0); //
-  const mermaidRef = useRef(null);
+  const [mermaidSvg, setMermaidSvg] = useState("");
+
+
 
   // -----------------------------
   // CACHE (persists across views)
@@ -82,74 +82,67 @@ const App = () => {
   // RENDER MERMAID DIAGRAM
   // -----------------------------
   useEffect(() => {
-  if (activeProject) return;
+    if (activeProject) return;
 
-  const container = mermaidRef.current;
-  if (!container) return;
+    let cancelled = false;
 
-  let cancelled = false;
+    const graphDefinition = `
+      flowchart LR
+        subgraph S1["Data Ingestion"]
+          A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
+        end
 
-  const graphDefinition = `
-    flowchart LR
-      subgraph S1["Data Ingestion"]
-        A["Data Sources\\nField Sampling | Lab Analysis | Vessel Data\\nRemote Sensing | Public Data"]
-      end
+        subgraph S2["Data Management"]
+          B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
+        end
 
-      subgraph S2["Data Management"]
-        B["PostgreSQL + PostGIS\\nCleaning | QA/QC | Governance"]
-      end
+        subgraph S3["Analytics"]
+          C["R | Python | Statistics | ML"]
+        end
 
-      subgraph S3["Analytics"]
-        C["R | Python | Statistics | ML"]
-      end
+        subgraph S4["Applications"]
+          D["Shiny | Streamlit Apps"]
+        end
 
-      subgraph S4["Applications"]
-        D["Shiny | Streamlit Apps"]
-      end
+        subgraph S5["Stakeholders"]
+          E["Regulators | Consultancies | ESG | HSE"]
+        end
 
-      subgraph S5["Stakeholders"]
-        E["Regulators | Consultancies | ESG | HSE"]
-      end
+        A --> B --> C --> D --> E
+    `;
 
-      A --> B --> C --> D --> E
-  `;
+    const run = async () => {
+      try {
+        const cacheKey = "main";
 
-  const render = async () => {
-    try {
-      const cacheKey = "main-diagram";
+        let svg = mermaidCache.current[cacheKey];
 
-      let svg;
+        if (!svg) {
+          const result = await mermaid.render(
+            `mermaid-${Date.now()}`,
+            graphDefinition
+          );
 
-      if (mermaidCache.current[cacheKey]) {
-        svg = mermaidCache.current[cacheKey];
-      } else {
-        const result = await mermaid.render(
-          `mermaid-${Date.now()}`,
-          graphDefinition
-        );
+          svg = result.svg;
+          mermaidCache.current[cacheKey] = svg;
+        }
 
-        svg = result.svg;
-        mermaidCache.current[cacheKey] = svg;
+        if (cancelled) return;
+
+        setMermaidSvg(svg);
+      } catch (err) {
+        console.error(err);
       }
+    };
 
-      if (cancelled || !container) return;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(run);
+    });
 
-      container.innerHTML = svg;
-      container.dataset.svg = svg;
-
-    } catch (err) {
-      console.error("Mermaid render error:", err);
-    }
-  };
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(render);
-  });
-
-  return () => {
-    cancelled = true;
-  };
-}, [viewKey]);
+    return () => {
+      cancelled = true;
+    };
+  }, [activeProject]);
 
 //   const renderDiagram = async () => {
 //     try {
@@ -343,7 +336,7 @@ const App = () => {
                 decision-ready intelligence. Read left to right: from data ingestion to stakeholder-facing tools.
               </p>
 
-              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 overflow-x-auto">
+              {/* <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 overflow-x-auto"> */}
 
                 {/* Mermaid container */}
                 {/* <div className="mermaid text-sm">
@@ -355,23 +348,23 @@ const App = () => {
                     E[End Users<br/>Regulators, Consultancies, ESG, HSE]`}
                 </div> */}
                 {/* Mermaid container */}
-                {!activeProject && (
-                  <div
-                    key={activeProject ? "detail" : "home"}
-                    ref={mermaidRef}
-                    className="cursor-zoom-in w-full"
-                    onClick={(e) => {
-                      const svgString = e.currentTarget.dataset.svg;
-                      if (!svgString) return;
+                <div
+                className="cursor-zoom-in w-full"
+                onClick={() => {
+                  if (!mermaidSvg) return;
 
-                      const blob = new Blob([svgString], {
-                        type: "image/svg+xml;charset=utf-8",
-                      });
+                  const blob = new Blob([mermaidSvg], {
+                    type: "image/svg+xml;charset=utf-8",
+                  });
 
-                      const url = URL.createObjectURL(blob);
-                      window.open(url, "_blank");
-                    }}
-                  />
+                  const url = URL.createObjectURL(blob);
+                  window.open(url, "_blank");
+                }}
+              >
+                {mermaidSvg ? (
+                  <div dangerouslySetInnerHTML={{ __html: mermaidSvg }} />
+                ) : (
+                  <div className="text-slate-500">Loading diagram...</div>
                 )}
               </div>
 
