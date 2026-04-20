@@ -48,6 +48,7 @@ function ExpandableImage({ src, alt, description, title }) {
 
 const App = () => {
   const [activeProject, setActiveProject] = useState(null);
+  const [diagramKey, setDiagramKey] = useState(0); //
   const mermaidRef = useRef(null);
 
   // -----------------------------
@@ -81,6 +82,9 @@ const App = () => {
   useEffect(() => {
     const container = mermaidRef.current;
     if (!container) return;
+
+    // ✅ ADD THIS LINE
+    container.innerHTML = "";
 
     const graphDefinition = `
       flowchart LR
@@ -145,7 +149,7 @@ const App = () => {
       cancelled = true;
       cancelAnimationFrame(frame);
     };
-  }, [activeProject]);
+  }, [activeProject, diagramKey]);
 
 //   const renderDiagram = async () => {
 //     try {
@@ -508,10 +512,28 @@ const App = () => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="fixed inset-0 overflow-auto bg-slate-950 z-50"
           >
-            <div className="max-w-5xl mx-auto px-6 py-16">
-              <button onClick={() => setActiveProject(null)} className="flex items-center gap-2 text-emerald-500/60 mb-12 hover:text-emerald-400 transition-colors font-mono text-sm">
-                <FaArrowLeft /> ESC / BACK TO OVERVIEW
+
+            <div className="flex justify-center mb-12">
+              <button 
+                onClick={() => {
+                  setActiveProject(null);
+                  setDiagramKey(prev => prev + 1);
+                }}
+                className="
+                  flex items-center gap-3
+                  bg-red-500/15 hover:bg-red-500/25
+                  text-red-300
+                  text-xl font-bold font-mono
+                  px-10 py-5
+                  rounded-xl
+                  shadow-lg shadow-red-500/10
+                  transition-all
+                "
+              >
+                <FaArrowLeft className="text-xl" />
+                ESC / BACK TO OVERVIEW
               </button>
+            </div>
 
               <div className="mb-16">
                 <h2 className="text-6xl font-extrabold mb-4 tracking-tighter">{RepoContent[activeProject].title}</h2>
