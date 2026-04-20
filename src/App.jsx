@@ -565,12 +565,9 @@ const App = () => {
                     <h4 className="text-emerald-500 font-mono text-xs uppercase mb-6 tracking-[0.2em] border-b border-emerald-500/20 pb-2">
                       Purpose
                     </h4>
-
-                    <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-6">
                       <p className="text-slate-200 text-lg leading-relaxed">
                         {RepoContent[activeProject].usedFor}
                       </p>
-                    </div>
                   </section>
 
                   {/* --- TECHNICAL SNAPSHOT --- */}
