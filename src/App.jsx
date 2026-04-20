@@ -142,9 +142,30 @@ const App = () => {
     };
 
     // IMPORTANT: wait for DOM paint after Framer Motion mount
-    const frame = requestAnimationFrame(() => {
-      requestAnimationFrame(render);
+  const waitForMountAndRender = () => {
+    if (!container) return;
+
+    // If already visible, render immediately
+    if (container.offsetParent !== null) {
+      render();
+      return;
+    }
+
+    // Otherwise observe until it becomes visible
+    const observer = new MutationObserver(() => {
+      if (container.offsetParent !== null) {
+        observer.disconnect();
+        render();
+      }
     });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  };
+
+  waitForMountAndRender();
 
     return () => {
       cancelled = true;
@@ -390,9 +411,6 @@ const App = () => {
                     <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Fisheries Dynamics</h3>
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Modeling a <span className="font-bold text-slate-200">21-year dataset</span> to establish historical baselines and simulate <span className="font-bold text-slate-200">biomass shifts</span> under +2°C climate warming scenarios.
-                    </p>
-                    <p className="text-emerald-400 text-xs mt-2">
-                      Used for: stock assessment and forecasting under environmental variability.
                     </p>
                   </div>
 
