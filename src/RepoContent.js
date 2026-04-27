@@ -274,36 +274,42 @@ export const RepoContent = {
 
   hseq: {
     title: "HSE Risk Intelligence",
-    tagline: "Operational Safety & Risk Governance",
+    tagline: "Operational Safety, Risk Engineering & Decision Intelligence",
 
-    overview: "Connects daily industrial operations to traceable risk, incidents, and corrective actions in a structured safety system.",
+    overview: "Transforms daily industrial operations into a structured, traceable risk intelligence system combining planning, execution, automation, and predictive analysis.",
 
-    usedFor: "Used to track operational risk in real time and maintain audit-ready safety compliance.",
+    usedFor: "Used to monitor operational risk in real time, automate safety workflows, and generate audit-ready, decision-grade safety intelligence.",
 
     technical: [
-      "Relational HSE database (tasks, hazards, incidents, controls)",
-      "Risk scoring system (severity × likelihood)",
-      "PostgreSQL + ERD-driven architecture",
-      "ISO 45001-aligned safety governance framework"
+      "Relational HSE database (tasks, hazards, controls, incidents, workforce)",
+      "Dynamic risk engine (conditions + controls + barrier integrity)",
+      "Bowtie risk modeling (threats, barriers, consequences)",
+      "Barrier effectiveness scoring system",
+      "Event-driven automation (hazards, actions, validations)",
+      "Scenario simulation engine (what-if risk modelling)",
+      "KPI & analytics layer (leading + lagging indicators)",
+      "PostgreSQL + Streamlit architecture",
+      "ISO 45001, NEBOSH-aligned governance framework"
     ],
 
-    scenario: "Tracks how hazards emerge during operations and propagate through controls, incidents, and corrective actions in industrial environments.",
+    scenario: "Captures how risk emerges from real-world conditions, evaluates control and barrier performance, simulates failure scenarios, and drives corrective actions across industrial operations.",
 
     plots: [
       {
         title: "Risk Intelligence Architecture",
         description:
-          "ERD showing full risk lifecycle from tasks to hazards, controls, incidents, and corrective actions in an auditable system.",
+          "ERD showing full lifecycle from planning and execution to automation, bowtie modeling, risk scoring, and KPI analytics.",
         src: hseqERD,
         type: "svg"
       }
     ],
 
     insights: [
-      "Operational risk emerges during execution, not just at planning stage.",
-      "Control effectiveness is critical to safety performance.",
-      "Full traceability enables audit-ready safety systems.",
-      "Structured workflows support proactive risk management."
+      "Risk is dynamic and evolves during execution, not just planning.",
+      "Barrier integrity is a key driver of operational risk.",
+      "Automation ensures consistent hazard detection and response.",
+      "Simulation enables proactive decision-making before failure occurs.",
+      "Structured data enables audit-ready and AI-ready safety systems."
     ],
 
     image: placeholderHSEQ,
@@ -311,15 +317,15 @@ export const RepoContent = {
     modules: [
       {
         name: "Decision Context",
-        detail: "Supports site managers, HSE officers, and consultants in identifying high-risk activities, monitoring safety performance, and ensuring compliance with safety standards."
+        detail: "Supports site managers, HSE officers, and executives in identifying high-risk activities, evaluating barrier integrity, and maintaining operational safety compliance."
       },
       {
         name: "System Design",
-        detail: "Built as a relational risk intelligence system connecting task templates, task executions, workforce structures (teams and organizations), hazards, controls, incidents, and corrective actions into a unified and traceable workflow."
+        detail: "Built as a modular risk intelligence platform integrating task execution, hazard modeling (bowtie), control effectiveness, automation, simulation, and KPI analytics into a unified system."
       },
       {
         name: "Decision Impact",
-        detail: "Enables proactive risk management, improves intervention tracking, and supports data-driven safety decisions across daily operations and long-term planning."
+        detail: "Enables proactive risk mitigation, automated corrective action workflows, and data-driven decision-making across daily operations and long-term planning."
       }
     ],
 
@@ -328,13 +334,13 @@ export const RepoContent = {
         label: "HSE Risk Intelligence System",
         subLabel: "Database & Architecture",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/",
-        description: "Core system showcasing database design, risk workflows, and safety intelligence architecture.",
+        description: "Core system showcasing database design, automation, risk modeling, and safety intelligence architecture.",
         flagship: true
       },
       {
         label: "Operations Manual",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/blob/main/docs/Database_Operations_Manual.md",
-        description: "Detailed documentation covering system logic, governance rules, and operational workflows."
+        description: "Detailed documentation covering system logic, governance rules, automation, and risk workflows."
       }
     ],
 
@@ -342,19 +348,18 @@ export const RepoContent = {
       {
         label: "Entity Relationship Diagram (ERD)",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/#conceptual-risk-intelligence-model",
-        description: "Visual overview of how tasks, hazards, controls, and incidents connect within the system."
+        description: "Visual overview of how planning, execution, hazards, controls, automation, and analytics connect."
       },
       {
         label: "How It Works (Non-Technical)",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/blob/main/HOW_IT_WORKS.md",
-        description: "Simple explanation of how the system captures, connects, and uses safety data."
+        description: "Step-by-step explanation of how the system captures, connects, and uses safety data."
       },
       {
         label: "Technical Case Study",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/blob/main/Case_Study.md",
-        description: "Detailed breakdown of system architecture, data models, and risk workflows."
+        description: "Detailed breakdown of architecture, risk engine, automation, and simulation layers."
       },
-
       {
         label: "Ask Your Questions",
         url: "mailto:euchiejnpierre@gmail.com",
