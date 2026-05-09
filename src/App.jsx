@@ -232,11 +232,10 @@ const App = () => {
     <>
       <Helmet>
 
-        <meta name="google-site-verification" content="ijy3h5_4ueia15vp7Mdf8FmFTJ5MDEj_vA7slnShcn0" />
         {/* PRIMARY SEO TITLE */}
         <title>
 
-          Environmental Data Scientist Portfolio | GIS, Marine Risk & Environmental Intelligence | Euchie Jn Pierre
+          Euchie Jn Pierre — Environmental Data Scientist | GIS, Marine Risk & Environmental Intelligence
 
         </title>
 
@@ -329,7 +328,7 @@ const App = () => {
             "Marine Risk Assessment",
             "Fisheries Analytics",
             "HSE-Q",
-            "Risk Intelligence"
+            "Risk Intelligence",
             "Python",
             "R"
           ]
@@ -559,7 +558,7 @@ const App = () => {
                 {/* --- Squid Fest Suite --- */}
                 <section>
                   <h3 className="text-emerald-500 font-mono text-[14px] uppercase tracking-[0.3em] mb-6 relative after:block after:w-full after:h-px after:bg-emerald-500 after:opacity-50 after:mt-2">
-                    Decision Intelligence Systems (Projects)
+                    Decision Intelligence Systems (Repositories)
                   </h3>
                   <h3 className="text-emerald-500 font-mono text-xs uppercase tracking-[0.3em] mb-4">
                     Environmental Decision Systems
