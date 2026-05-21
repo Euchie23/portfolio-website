@@ -2,16 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // --- Top images for inside the card ---
-import placeholderSquidStack from "../images/squidstackapp.png";
-import placeholderSquidStock from "../images/squidstockapp.png";
-import placeholderGeoTentacles from "../images/geotentaclesapp.png";
-import placeholderHSEQ from "../images/hseq.png";
+import placeholderSquidStack from "../images/squidstackapp.webp";
+import placeholderSquidStock from "../images/squidstockapp.webp";
+import placeholderGeoTentacles from "../images/geotentaclesapp.webp";
+import placeholderHSEQ from "../images/hseq.webp";
 
 // --- Background images for the card panel ---
-import bgSquidStack from "../images/squidstack.jpeg";
-import bgSquidStock from "../images/squidstock.jpeg";
-import bgGeoTentacles from "../images/geotentacles.png";
-import bgHSEQ from "../images/hseq.png";
+import bgSquidStack from "../images/squidstack.webp";
+import bgSquidStock from "../images/squidstock.webp";
+import bgGeoTentacles from "../images/geotentacles.webp";
+import bgHSEQ from "../images/hseq.webp";
 
 
 import { FaFish, FaBiohazard, FaGlobeAmericas, FaHardHat } from 'react-icons/fa';

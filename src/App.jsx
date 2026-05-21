@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaFish, FaBiohazard, FaGlobeAmericas, FaHardHat, FaArrowLeft, FaExternalLinkAlt, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { RepoContent } from './RepoContent';
 import { BentoGrid } from "./components/BentoGrid";
-import biomassImg from "./images/squids.jpg";
+import biomassImg from "./images/squids.webp";
 
 
 

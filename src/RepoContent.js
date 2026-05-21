@@ -5,10 +5,10 @@ import placeholderGeoTentacles from "./images/geotentaclesapp.webp";
 import placeholderHSEQ from "./images/hseq.webp";
 
 // Background images for the card panel
-import bgSquidStack from "./images/squidstack.jpeg";
-import bgSquidStock from "./images/squidstock.jpeg";
-import bgGeoTentacles from "./images/geotentacles.png";
-import bgHSEQ from "./images/hseq.png";
+import bgSquidStack from "./images/squidstack.webp";
+import bgSquidStock from "./images/squidstock.webp";
+import bgGeoTentacles from "./images/geotentacles.webp";
+import bgHSEQ from "./images/hseq.webp";
 
 // Plots and Graph Images to be Rendered in Bento Cards
 //SquidStack
