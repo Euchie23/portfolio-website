@@ -278,7 +278,7 @@ const App = () => {
         {/* PREVIEW IMAGE */}
         <meta
           property="og:image"
-          content="https://euchie-portfolio.vercel.app/headshot.JPG"
+          content="https://euchie-portfolio.vercel.app/headshot.webp"
         />
 
         {/* TWITTER PREVIEW */}
@@ -299,7 +299,7 @@ const App = () => {
 
         <meta
           name="twitter:image"
-          content="https://euchie-portfolio.vercel.app/headshot.JPG"
+          content="https://euchie-portfolio.vercel.app/headshot.webp"
         />
 
         {/* STRUCTURED DATA */}
@@ -310,7 +310,7 @@ const App = () => {
           "@type": "Person",
           "name": "Euchie Jn Pierre",
           "url": "https://euchie-portfolio.vercel.app/",
-          "image": "https://euchie-portfolio.vercel.app/headshot.JPG",
+          "image": "https://euchie-portfolio.vercel.app/headshot.webp",
           "jobTitle": "Environmental Data Scientist",
           "address": {
             "@type": "PostalAddress",
@@ -346,7 +346,7 @@ const App = () => {
               <header className="max-w-6xl mx-auto px-6 pt-20 pb-12 flex flex-col md:flex-row items-center gap-8">
                 <div className="relative w-40 h-40 rounded-2xl overflow-hidden border-2 border-emerald-500/20 shadow-2xl bg-slate-900">
                   <img
-                    src="/headshot.JPG"
+                    src="/headshot.webp"
                     alt="Euchie Jn Pierre"
                     className="w-full h-full object-cover"
                     onError={handleImageError}
