@@ -657,8 +657,10 @@ const App = () => {
 
                 <img
                   src={RepoContent[activeProject].image}
+                    loading="eager"
+                    decoding="async"
                   alt={`${RepoContent[activeProject].title} screenshot`}
-                  className="w-full rounded-lg my-10"
+                  className="w-full rounded-lg my-10 object-cover"
                 />
                 {/* <BentoGrid repos={RepoContent} /> */}
 
@@ -711,7 +713,6 @@ const App = () => {
 
                         <div className="space-y-10">
                           {RepoContent[activeProject].plots.map((plot, i) => {
-                            console.log("PLOT DEBUG:", plot); // 👈 ADD THIS
 
                             return (
                               <div key={i} className="space-y-4">
@@ -733,7 +734,9 @@ const App = () => {
                                   <img
                                     src={plot?.src}
                                     alt={plot?.title}
-                                    className="w-full rounded-xl border border-slate-800"
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-full rounded-xl border border-slate-800 object-cover"
                                   />
                                 )}
 

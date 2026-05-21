@@ -2,3 +2,20 @@ User-agent: *
 Allow: /
 
 Sitemap: https://euchie-portfolio.vercel.app/sitemap.xml
+
+
+Interactive portfolio showcasing environmental intelligence systems, fisheries analytics, GIS workflows, marine risk assessment, climate-informed modeling, and HSE-Q decision-support applications built using Python, R, PostgreSQL/PostGIS, and Streamlit.
+
+Environmental Data Science & Risk Intelligence Portfolio
+
+
+Showcasing interactive dashboards, analytical tools, and data workflows focused on environmental monitoring, spatial analysis, and risk-aware decision-support systems.
+
+GitHub Portfolio: Environmental Data & Risk Analytics
+
+Building spatial and environmental risk intelligence systems that transform complex ecological and operational data into decision-ready insights.
+
+Curated portfolio of environmental intelligence systems for fisheries analytics, marine risk, and HSE-Q decision-support, organized as case studies and system architectures from GitHub repositories.
+
+
+Environmental data science portfolio covering fisheries analytics, marine ecosystem modeling, climate risk, geospatial intelligence (GIS/PostGIS), and HSE-Q risk analysis. Includes end-to-end decision-support systems and GitHub-hosted implementations.
