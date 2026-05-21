@@ -1,8 +1,8 @@
 // Top images for inside the card
-import placeholderSquidStack from "./images/squidstackapp.png";
-import placeholderSquidStock from "./images/squidstockapp.png";
-import placeholderGeoTentacles from "./images/geotentaclesapp.png";
-import placeholderHSEQ from "./images/hseq.png";
+import placeholderSquidStack from "./images/squidstackapp.webp";
+import placeholderSquidStock from "./images/squidstockapp.webp";
+import placeholderGeoTentacles from "./images/geotentaclesapp.webp";
+import placeholderHSEQ from "./images/hseq.webp";
 
 // Background images for the card panel
 import bgSquidStack from "./images/squidstack.jpeg";
@@ -12,17 +12,17 @@ import bgHSEQ from "./images/hseq.png";
 
 // Plots and Graph Images to be Rendered in Bento Cards
 //SquidStack
-import squidStackEdi from "./images/EDI.png";
-import squidStackHq from "./images/HQ.png";
+import squidStackEdi from "./images/EDI.webp";
+import squidStackHq from "./images/HQ.webp";
 //SquidStock
-import biomassScenarios from "./images/biomass_scenarios_comparison.png";
-import tempGrowth from "./images/temperature_dependent_growth_rate.png";
-import cpueScatter from "./images/cpue_vs_biomass_comparison.png";
+import biomassScenarios from "./images/biomass_scenarios_comparison.webp";
+import tempGrowth from "./images/temperature_dependent_growth_rate.webp";
+import cpueScatter from "./images/cpue_vs_biomass_comparison.webp";
 //GeoTentacles
-import toxicTideMapping from "./images/toxictidemapping.png";
-import ecoPulseIndex from "./images/ecopulseindex.png";
-import disruptionEcosystem from "./images/disruptionEcosystem.png";
-import disruptionPressure from "./images/disruptionPressure.png";
+import toxicTideMapping from "./images/toxictidemapping.webp";
+import ecoPulseIndex from "./images/ecopulseindex.webp";
+import disruptionEcosystem from "./images/disruptionEcosystem.webp";
+import disruptionPressure from "./images/disruptionPressure.webp";
 //HSEQ
 import hseqERD from "./images/ERD_white.svg";
 
