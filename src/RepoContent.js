@@ -105,81 +105,96 @@ export const RepoContent = {
     title: "SquidStock",
     tagline: "Fisheries Analytics & Predictive Insight",
 
-    overview: "Separates true biomass dynamics from misleading CPUE signals under climate variability.",
+    overview: "Explores how environmental forcing, biomass dynamics, fishing pressure, and CPUE signals interact under baseline and warming scenarios.",
 
-    usedFor: "Used to detect true stock trends and forecast climate-driven shifts in fishery abundance.",
+    usedFor: "Used to test biomass response under climate scenarios, evaluate CPUE reliability, and support risk-aware fisheries decision-making.",
 
     technical: [
       "CPUE standardisation across multi-year fisheries datasets",
-      "Mechanistic biomass simulation under +2°C climate scenarios",
-      "Python + Streamlit predictive modelling pipeline",
-      "Hybrid ecological + ML forecasting framework"
+      "Mechanistic biomass simulation under baseline and +2°C warming scenarios",
+      "Temperature-dependent growth, productivity forcing, and catchability-based harvest modelling",
+      "Python + Streamlit interactive decision-support pipeline",
+      "Hybrid ecological + predictive fisheries analytics framework"
     ],
 
-    scenario: "Simulates squid population response under warming conditions to evaluate how reliably CPUE reflects true biomass dynamics.",
+    scenario: "Simulates squid population response under baseline and warming conditions, then compares CPUE against selected biomass scenarios to assess whether catch rates reliably reflect stock dynamics.",
 
     plots: [
       {
         title: "Biomass Under Warming Scenarios",
         description:
-          "Warming produces ~10% biomass increase under simplified ecological assumptions, likely representing an upper-bound response.",
+          "Compares baseline biomass against a +2°C warming scenario. The warming line sits slightly above baseline, showing a modest positive biomass response, while the percentage-change panel shows the stock ending around 5% higher under current model assumptions.",
         src: biomassScenarios
       },
       {
         title: "Temperature-Dependent Growth",
         description:
-          "Growth rate varies with thermal optimum (r ≈ 0.01–0.03), directly influencing biomass stability.",
+          "Shows simulated biomass alongside the temperature-dependent growth rate (rₜ). Biomass increases gradually while rₜ fluctuates through time, indicating that temperatures remain reasonably close to the modelled thermal optimum and support positive growth.",
         src: tempGrowth
       },
       {
         title: "CPUE vs Biomass",
         description:
-          "Weak correlation (r ≈ 0.09) shows CPUE is an unreliable proxy for true population size under environmental variability.",
+          "Shows that CPUE does not reliably follow simulated biomass. In the current scenario, biomass trends upward while CPUE fluctuates and can move in the opposite direction, producing a weak to moderate negative relationship and warning that catch rates alone may misrepresent stock status.",
         src: cpueScatter
       }
     ],
 
     insights: [
-      "Temperature is the primary driver of biomass variation in the model.",
-      "CPUE is an unreliable proxy for true population size.",
-      "Warming scenarios likely overestimate real-world growth."
+      "SST influences biomass through a temperature-dependent growth response.",
+      "Chlorophyll-a acts as a productivity modifier rather than being merged directly with temperature into one environmental index.",
+      "CPUE should not be treated as a standalone abundance indicator, especially for mobile and aggregating squid.",
+      "Moderate warming may produce small biomass gains in the model, but real-world benefits may be overestimated because migration, upwelling, and spatial habitat shifts are simplified."
     ],
 
     image: placeholderSquidStock,
     modules: [
       {
         name: "Decision Context",
-        detail: "Helps fisheries managers and policymakers understand stock variability, environmental sensitivity, and reliability of CPUE as an abundance indicator."
+        detail: "Helps fisheries managers and policymakers understand stock variability, environmental sensitivity, harvest pressure, and the reliability of CPUE as an abundance indicator."
       },
       {
         name: "System Design",
-        detail: "Combines mechanistic biomass simulation with standardized and predictive CPUE workflows, linking environmental signals to operational fisheries decisions."
+        detail: "Combines mechanistic biomass simulation with standardized and predictive CPUE workflows, separating thermal suitability, productivity forcing, and fishing pressure to support clearer scenario interpretation."
       },
       {
         name: "Decision Impact",
-        detail: "Enables managers to identify when CPUE may misrepresent stock abundance, evaluate warming impacts on biomass, and make scenario-informed decisions for quota setting, monitoring, and climate-risk planning."
+        detail: "Enables users to compare baseline and warming biomass scenarios, identify when CPUE may misrepresent abundance, and stress-test climate-risk assumptions before making monitoring or quota decisions."
       }
     ],
+
     links: [
       {
-        label: "Biomass Simulator & Estimation Module",   // consultancy name
-        subLabel: "Ocean Dynamics",                // your original name
+        label: "Biomass Simulator & Estimation Module",
+        subLabel: "Ocean Dynamics",
         url: "https://squidstock-ocean-dynamics.streamlit.app",
-        description: "Flagship module: simulates squid biomass dynamics under baseline and warming scenarios, quantifying how temperature-driven growth and fishing pressure interact to shape stock trajectories and management risk.",
+        description: "Flagship module: simulates squid biomass under baseline and warming scenarios, quantifying how temperature-dependent growth, productivity conditions, catchability, and fishing effort interact to shape stock trajectories and decision risk.",
         flagship: true
       },
 
       {
         label: "View Full Project & Data Suite",
         url: "https://github.com/Euchie23/SquidStock/",
-        description: "Access the other modules covering Temporal CPUE analysis, CPUE Standardization and Prediction, and Biomass Simulations under Warming Scenarios"
+        description: "Access the full SquidStock suite covering Temporal Catch Analysis, CPUE Standardization and Prediction, and Biomass Simulation under Warming Scenarios."
       }
     ],
 
     sideLinks: [
-      { label: "Technical Case Study", url: "https://github.com/Euchie23/SquidStock/blob/main/Case_Study.md", description: "Explore the detailed project workflow and analysis approach." },
-      { label: "Notebooks & Methods", url: "https://github.com/Euchie23/SquidStock/tree/main/notebooks/", description: "Review the analytical notebooks and modeling methods used." },
-      { label: "Ask Your Questions", url: "mailto:euchiejnpierre@gmail.com", description: "Reach out for clarifications or additional insights." }
+      {
+        label: "Technical Case Study",
+        url: "https://github.com/Euchie23/SquidStock/blob/main/Case_Study.md",
+        description: "Explore the detailed project workflow, assumptions, and analysis approach."
+      },
+      {
+        label: "Notebooks & Methods",
+        url: "https://github.com/Euchie23/SquidStock/tree/main/notebooks/",
+        description: "Review the analytical notebooks and modelling methods used."
+      },
+      {
+        label: "Ask Your Questions",
+        url: "mailto:euchiejnpierre@gmail.com",
+        description: "Reach out for clarifications or additional insights."
+      }
     ]
   },
 
