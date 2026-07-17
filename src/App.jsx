@@ -414,13 +414,22 @@ const App = () => {
                       <li>• Supports early-stage ecological risk evaluation</li>
                     </ul>
 
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap gap-4">
                       <a
                         href="https://squidstock-ocean-dynamics.streamlit.app"
                         target="_blank" rel="noopener noreferrer"
                         className="px-5 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20 transition text-sm font-semibold"
                       >
                         Launch App
+                      </a>
+
+                      <a
+                        href="https://youtu.be/UeumWYCHvPI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2 rounded-lg bg-sky-500/10 border border-sky-500/40 text-sky-300 hover:bg-sky-500/20 hover:border-sky-400 transition text-sm font-semibold"
+                      >
+                        ▶ Watch Guided Tour
                       </a>
 
                       <a
@@ -779,23 +788,52 @@ const App = () => {
                     <div className="bg-slate-900 p-8 rounded-3xl border border-slate-800 sticky top-8">
                       <h4 className="text-[12px]font-bold mb-6 text-xs uppercase tracking-widest text-slate-500">Project Links</h4>
                       <div className="flex flex-col gap-4">
-                        {/* Main links */}
-                        {RepoContent[activeProject].links.map((l, i) => (
+                      {/* Main links */}
+                      {RepoContent[activeProject].links.map((l, i) => {
+                        const isVideo = l.type === "video";
+                        const isFlagship = l.flagship === true;
+
+                        return (
                           <a
-                            key={i}
+                            key={`${l.label}-${i}`}
                             href={l.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex flex-col p-4 bg-slate-800/50 hover:bg-emerald-500/10 border border-slate-700 hover:border-emerald-500/40 text-slate-300 hover:text-emerald-400 rounded-xl transition-all text-sm font-semibold"
+                            aria-label={`${l.label}${l.subLabel ? ` — ${l.subLabel}` : ""}`}
+                            className={`
+                              flex flex-col p-4 rounded-xl border transition-all
+                              ${
+                                isFlagship
+                                  ? "bg-emerald-500/10 border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-400"
+                                  : isVideo
+                                    ? "bg-sky-500/10 border-sky-500/30 text-sky-300 hover:bg-sky-500/20 hover:border-sky-400"
+                                    : "bg-slate-800/50 border-slate-700 text-slate-300 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-400"
+                              }
+                            `}
                           >
-                            <div className="flex items-center justify-between">
-                              <span>{l.label}</span>
+                            <div className="flex items-center justify-between gap-3">
+                              <span>{isVideo ? `▶ ${l.label}` : l.label}</span>
                               <FaExternalLinkAlt size={15} />
                             </div>
-                            {l.subLabel && <span className="text-xs text-slate-400 mt-1">{l.subLabel}</span>}
-                            {l.description && <span className="text-[12px] text-slate-500 mt-2 leading-snug">{l.description}</span>}
+
+                            {l.subLabel && (
+                              <span
+                                className={`text-xs mt-1 ${
+                                  isVideo ? "text-sky-400/80" : "text-slate-400"
+                                }`}
+                              >
+                                {l.subLabel}
+                              </span>
+                            )}
+
+                            {l.description && (
+                              <span className="text-[12px] text-slate-500 mt-2 leading-snug">
+                                {l.description}
+                              </span>
+                            )}
                           </a>
-                        ))}
+                        );
+                      })}
 
                         {/* Side links */}
                         <div className="mt-6 flex flex-col gap-3">

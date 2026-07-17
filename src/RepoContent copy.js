@@ -90,14 +90,6 @@ export const RepoContent = {
         flagship: true
       },
       {
-        label: "Watch the 5-Minute Guided Tour",
-        subLabel: "Risk Evaluation Walkthrough",
-        url: "https://youtu.be/YYWmWo-iLIg",
-        description:
-          "See how the dashboard tests dietary exposure assumptions, compares EDI and HQ scenarios, communicates uncertainty, and records decision-support notes.",
-        type: "video"
-      },
-      {
         label: "View Full Project & Data Suite",
         url: "https://github.com/Euchie23/SquidStack/",
         description: "Explore complementary modules covering analytical validation, exploratory dashboards, and temporal trend analyses including COVID-19 reprieve periods."
@@ -179,14 +171,7 @@ export const RepoContent = {
         description: "Flagship module: simulates squid biomass under baseline and warming scenarios, quantifying how temperature-dependent growth, productivity conditions, catchability, and fishing effort interact to shape stock trajectories and decision risk.",
         flagship: true
       },
-      {
-        label: "Watch the 5-Minute Guided Tour",
-        subLabel: "Ocean Dynamics Walkthrough",
-        url: "https://youtu.be/UeumWYCHvPI",
-        description:
-          "See how users adjust ecological and fisheries assumptions, compare baseline and warming scenarios, interpret CPUE reliability, and restore saved analytical states.",
-        type: "video"
-      },
+
       {
         label: "View Full Project & Data Suite",
         url: "https://github.com/Euchie23/SquidStock/",
@@ -288,14 +273,6 @@ export const RepoContent = {
       url: "https://geotentacles-marinescope.streamlit.app",
       description: "Visualizes ecosystem health, pollution distribution, and operational hotspots through interactive spatial layers.",
       flagship: true
-    },
-    {
-      label: "Watch the 5-Minute Guided Tour",
-      subLabel: "MarineScope Walkthrough",
-      url: "https://youtu.be/m0ECpnxTsNI",
-      description:
-        "See how MarineScope transforms sampled and modelled environmental data into pollution surfaces, ecosystem-condition indicators, disruption analysis, and reusable investigation notes.",
-      type: "video"
     },
     {
       label: "View Full Project & Data Suite",
