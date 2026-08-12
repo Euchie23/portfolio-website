@@ -235,14 +235,14 @@ const App = () => {
         {/* PRIMARY SEO TITLE */}
         <title>
 
-          Euchie Jn Pierre — Environmental Data Scientist | GIS, Marine Risk & Environmental Intelligence
+          Euchie Jn Pierre — Applied Data Scientist | Decision Intelligence & Risk Analytics
 
         </title>
 
         {/* META DESCRIPTION */}
         <meta
           name="description"
-          content="Environmental Data Scientist portfolio specializing in GIS, marine risk modeling, fisheries analytics, PostGIS, and environmental intelligence systems. Projects include climate risk simulation and spatial decision-support tools."
+          content="Applied Data Scientist specializing in decision intelligence, risk analytics, environmental data science, GIS, PostGIS, fisheries analytics, marine risk assessment, HSE risk systems, and operational decision-support tools."
         />
 
         {/* AUTHOR */}
@@ -260,12 +260,12 @@ const App = () => {
         {/* OPEN GRAPH */}
         <meta
           property="og:title"
-          content="Euchie Jn Pierre | Environmental Data Scientist"
+          content="Euchie Jn Pierre | Applied Data Scientist — Decision Intelligence & Risk Analytics"
         />
 
         <meta
           property="og:description"
-          content="Environmental data science, GIS workflows, fisheries analytics, marine risk assessment, and HSE-Q intelligence systems."
+          content="Applied data science, decision intelligence, risk analytics, GIS, environmental intelligence, fisheries analytics, and operational HSE risk systems."
         />
 
         <meta
@@ -289,12 +289,12 @@ const App = () => {
 
         <meta
           name="twitter:title"
-          content="Euchie Jn Pierre | Environmental Data Scientist"
+          content="Euchie Jn Pierre | Applied Data Scientist"
         />
 
         <meta
           name="twitter:description"
-          content="Environmental intelligence, GIS, fisheries analytics, marine risk assessment, and HSE-Q systems."
+          content="Decision intelligence, risk analytics, environmental data science, GIS, fisheries analytics, marine risk, and operational HSE systems."
         />
 
         <meta
@@ -311,7 +311,7 @@ const App = () => {
           "name": "Euchie Jn Pierre",
           "url": "https://euchie-portfolio.vercel.app/",
           "image": "https://euchie-portfolio.vercel.app/headshot.webp",
-          "jobTitle": "Environmental Data Scientist",
+          "jobTitle": "Applied Data Scientist | Decision Intelligence & Risk Analytics",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Saint Lucia",
@@ -322,15 +322,24 @@ const App = () => {
             "https://www.linkedin.com/in/euchiejnpierre/"
           ],
           "knowsAbout": [
+            "Data Science",
+            "Decision Intelligence",
+            "Risk Analytics",
             "Environmental Data Science",
+            "Geospatial Intelligence",
             "GIS",
             "PostGIS",
             "Marine Risk Assessment",
             "Fisheries Analytics",
-            "HSE-Q",
-            "Risk Intelligence",
+            "Climate Risk",
+            "HSE Risk Management",
+            "Operational Risk",
             "Python",
-            "R"
+            "R",
+            "SQL",
+            "Statistical Modeling",
+            "Spatial Analysis",
+            "Decision Support Systems"
           ]
         }
         `}
@@ -354,7 +363,7 @@ const App = () => {
                 </div>
                 <div className="text-center md:text-left">
                   <h1 className="text-5xl font-bold mb-2 tracking-tight">Euchie Jn Pierre</h1>
-                  <p className="text-slate-400 text-lg font-light italic">  Applied Environmental Data Scientist & Risk Analyst </p>
+                  <p className="text-slate-400 text-lg font-light italic">  Applied Data Scientist | Decision Intelligence & Risk Analytics </p>
                   <div className="flex gap-4 mt-6 justify-center md:justify-start">
                     <a href="https://github.com/Euchie23" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors"><FaGithub size={22} /></a>
                     <a href="https://www.linkedin.com/in/euchiejnpierre/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors"><FaLinkedin size={22} /></a>
@@ -367,16 +376,18 @@ const App = () => {
               <section className="max-w-6xl mx-auto px-6 mb-24 mt-16">
                 {/* The "Power Line" - Adjusted Size */}
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100 mb-10 leading-tight">
-                  I build <span className="text-emerald-400">risk-aware decision-support systems</span> that turn complex environmental and operational data into <span className="text-emerald-400 italic">defensible, decision-ready insights</span>.
+                  I build <span className="text-emerald-400">data-driven decision-support systems</span> that turn complex environmental and operational data into <span className="text-emerald-400 italic">defensible insights for risk, planning, and high-stakes decisions</span>.
                 </h2>
 
                 {/* Quick Context / Location */}
                 <div className="flex flex-wrap gap-4 mb-16 text-slate-500 font-mono text-[15px] uppercase tracking-[0.2em]">
-                  <span>Environmental Data Scientist</span>
+                  <span>Environmental Data Science</span>
                   <span className="text-slate-800">|</span>
-                  <span>HSE-Q Risk Analyst</span>
+                  <span>Risk Analytics</span>
                   <span className="text-slate-800">|</span>
-                  <span>Saint Lucia — Taiwan</span>
+                  <span>Spatial Intelligence</span>
+                  <span className="text-slate-800">|</span>
+                  <span>Operational HSE</span>
                 </div>
               </section>
 
@@ -444,10 +455,10 @@ const App = () => {
                 </div>
               </section>
 
-              {/* --- DECISION SUPPORT ARCHITECTURE --- */}
+              {/* --- DATA-TO-DECISION ARCHITECTURE --- */}
               <section className="max-w-6xl mx-auto px-6 mb-24">
                 <h3 className="text-emerald-500 font-mono text-[14px] uppercase tracking-[0.3em] mb-6 relative after:block after:w-full after:h-px after:bg-emerald-500 after:opacity-50 after:mt-2">
-                  Decision-Support Architecture
+                  Data-To-Decision Architecture
                 </h3>
 
                 <p className="text-slate-400 text-sm mb-10 max-w-2xl leading-relaxed">
@@ -510,11 +521,11 @@ const App = () => {
                       </p>
                     </div>
 
-                    {/* Pillar 3: Fisheries Dynamics */}
+                    {/* Pillar 3: Fisheries Decision Intelligence */}
                     <div className="flex flex-col space-y-3 lg:border-l lg:border-slate-800/40 lg:pl-10">
-                      <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Fisheries Dynamics</h3>
+                      <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Fisheries Decision Intelligence</h3>
                       <p className="text-slate-400 text-sm leading-relaxed">
-                        Modeling a <span className="font-bold text-slate-200">21-year dataset</span> to establish historical baselines and simulate <span className="font-bold text-slate-200">biomass shifts</span> under +2°C climate warming scenarios.
+                        Analyzed <span className="font-bold text-slate-200">21 years of fisheries data </span> to establish historical baselines and built scenario models to evaluate <span className="font-bold text-slate-200">potential biomass changes</span> under ocean warming conditions.
                       </p>
                     </div>
 
@@ -608,9 +619,9 @@ const App = () => {
 
                   <ul className="text-slate-400 text-sm space-y-3 list-disc list-inside">
                     <li>Name pronunciation: <span className="text-emerald-400 font-semibold">Euchie Jn Pierre (You-Chee Juhn Pee-air)</span></li>
-                    <li>Caribbean-born, raised with a deep respect for nature and community.</li>
+                    <li><span className="text-slate-200 font-semibold">Saint Lucia — Taiwan</span>{" "} | Caribbean-born, with 12+ years of study and professional experience in Asia.</li>
                     <li>Studied and worked in Asia for 12+ years; intermediate Mandarin speaker with strong cross-cultural adaptability.</li>
-                    <li>Passionate about translating data into real-world environmental and operational insights.</li>
+                    <li>Passionate about translating complex data into practical insights for environmental, operational and risk decisions.</li>
                     <li>Outdoor enthusiast: long-distance cycling, mountain adventures, hiking, and nature walks — nature fuels creativity and resilience.</li>
                   </ul>
                 </section>
@@ -694,7 +705,7 @@ const App = () => {
                     {/* --- TECHNICAL SNAPSHOT --- */}
                     <section>
                       <h4 className="text-emerald-500 font-mono text-xs uppercase mb-6 tracking-[0.2em] border-b border-emerald-500/20 pb-2">
-                        Technical Snapshot
+                        Data & System Architecture
                       </h4>
                       <ul className="text-slate-400 text-lg leading-relaxed space-y-2">
                         {RepoContent[activeProject].technical?.map((t, i) => (
@@ -772,7 +783,7 @@ const App = () => {
                       </ul>
                     </section>
 
-                    {/* --- CORE METHODOLOGIES --- */}
+                    {/* --- DECISION & ANALYTICAL FRAMEWORK --- */}
                     <section className="space-y-10">
                       <h4 className="text-emerald-500 font-mono text-xs uppercase mb-6 tracking-[0.2em] border-b border-emerald-500/20 pb-2">Core Methodologies</h4>
                       {RepoContent[activeProject].modules.map((m, i) => (

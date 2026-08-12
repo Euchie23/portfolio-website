@@ -29,18 +29,20 @@ import hseqERD from "./images/ERD_white.svg";
 export const RepoContent = {
   squidstack: {
     title: "SquidStack",
-    tagline: "Marine Pollution & Risk Intelligence",
+    tagline: "Marine Pollution & Human Health Risk Intelligence",
 
-    overview: "Translates marine contamination data into human health risk signals (EDI/HQ) for seafood safety and exposure assessment.",
+    overview: "Transforms marine contamination data into interpretable human health risk indicators (EDI/HQ), connecting laboratory measurements, exposure assumptions, and population-level risk.",
 
-    usedFor: "Used to assess seafood safety risk and quantify population-level exposure under real consumption scenarios.",
+    usedFor: "Supports seafood safety assessment by testing exposure scenarios, identifying priority contaminants, and translating analytical measurements into decision-ready risk indicators.",
 
     technical: [
-      "CRM-validated multi-year contaminant datasets (metals + organics)",
+      "Multi-year, laboratory-validated contaminant datasets covering metals and organic contaminants",
       "EDI / HQ exposure risk modelling pipeline",
-      "R + Shiny interactive analytics dashboards",
-      "End-to-end contamination → risk transformation workflow"
+      "R + Shiny interactive analytics application",
+      "Scenario-based exposure analysis using country-specific consumption profiles",
+      "End-to-end contamination → exposure → risk transformation workflow"
     ],
+
 
     scenario: "Models population-level exposure using country-specific consumption profiles to convert contamination levels into EDI/HQ risk signals.",
 
@@ -111,19 +113,21 @@ export const RepoContent = {
 
   squidstock: {
     title: "SquidStock",
-    tagline: "Fisheries Analytics & Predictive Insight",
+    tagline: "Fisheries Analytics & Climate Scenario Modeling",
 
-    overview: "Explores how environmental forcing, biomass dynamics, fishing pressure, and CPUE signals interact under baseline and warming scenarios.",
+    overview: "Analyzes how environmental conditions, biomass dynamics, fishing pressure, and CPUE interact, using historical fisheries data and scenario modelling to evaluate climate-related decision risk.",
 
-    usedFor: "Used to test biomass response under climate scenarios, evaluate CPUE reliability, and support risk-aware fisheries decision-making.",
+    usedFor: "Supports fisheries planning by comparing baseline and warming scenarios, testing biomass assumptions, and evaluating when CPUE may provide an unreliable signal of stock status.",
 
     technical: [
+      "21-year fisheries dataset used to establish historical baselines",
       "CPUE standardisation across multi-year fisheries datasets",
       "Mechanistic biomass simulation under baseline and +2°C warming scenarios",
-      "Temperature-dependent growth, productivity forcing, and catchability-based harvest modelling",
-      "Python + Streamlit interactive decision-support pipeline",
-      "Hybrid ecological + predictive fisheries analytics framework"
+      "Temperature-dependent growth, productivity forcing, and fishing-pressure modelling",
+      "Python + Streamlit interactive decision-support application",
+      "Scenario analysis combining ecological dynamics with fisheries indicators"
     ],
+
 
     scenario: "Simulates squid population response under baseline and warming conditions, then compares CPUE against selected biomass scenarios to assess whether catch rates reliably reflect stock dynamics.",
 
@@ -216,18 +220,21 @@ export const RepoContent = {
 
   geotentacles: {
     title: "GeoTentacles",
-    tagline: "Spatial Marine Intelligence & Decision Support",
+    tagline: "Geospatial Environmental Intelligence & Risk Mapping",
 
-    overview: "Transforms fragmented environmental data into spatial risk maps for pollution and ecosystem health.",
+    overview: "Transforms fragmented environmental and geospatial data into spatial risk surfaces that reveal pollution patterns, ecosystem stress, and priority monitoring areas.",
 
-    usedFor: "Used to identify pollution hotspots and prioritise spatial environmental risk interventions.",
+    usedFor: "Supports spatial risk assessment by identifying pollution hotspots, mapping ecosystem stress, and helping prioritize environmental monitoring and intervention.",
 
     technical: [
-      "Multi-source environmental + fisheries datasets",
-      "Spatial interpolation (IDW) + Random Forest hotspot prediction",
-      "PostGIS geospatial database pipeline",
-      "Python + Folium + Streamlit spatial analytics system"
+      "Multi-source environmental, biological, and fisheries datasets",
+      "PostGIS geospatial data pipeline",
+      "Spatial interpolation using IDW",
+      "Random Forest hotspot prediction",
+      "Python + Folium + Streamlit spatial analytics application",
+      "Interactive spatial risk mapping and environmental intelligence"
     ],
+
 
     scenario: "Maps pollution gradients and ecosystem health patterns to identify high-risk marine zones and environmental stress areas.",
 
@@ -314,9 +321,9 @@ export const RepoContent = {
     title: "HSE Risk Intelligence",
     tagline: "Operational Safety, Risk Engineering & Decision Intelligence",
 
-    overview: "Transforms daily industrial operations into a structured, traceable risk intelligence system combining planning, execution, automation, and predictive analysis.",
+    overview: "Models daily industrial operations as a structured risk intelligence system, connecting planning, task execution, hazards, controls, barriers, automation, and analytics.",
 
-    usedFor: "Used to monitor operational risk in real time, automate safety workflows, and generate audit-ready, decision-grade safety intelligence.",
+    usedFor: "Designed to monitor operational risk, evaluate control and barrier effectiveness, automate safety workflows, and generate structured, audit-ready risk intelligence.",
 
     technical: [
       "Relational HSE database (tasks, hazards, controls, incidents, workforce)",
@@ -327,7 +334,7 @@ export const RepoContent = {
       "Scenario simulation engine (what-if risk modelling)",
       "KPI & analytics layer (leading + lagging indicators)",
       "PostgreSQL + Streamlit architecture",
-      "ISO 45001, NEBOSH-aligned governance framework"
+      "ISO 45001-aligned governance framework"
     ],
 
     scenario: "Captures how risk emerges from real-world conditions, evaluates control and barrier performance, simulates failure scenarios, and drives corrective actions across industrial operations.",
