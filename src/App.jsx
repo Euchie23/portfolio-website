@@ -619,8 +619,7 @@ const App = () => {
 
                   <ul className="text-slate-400 text-sm space-y-3 list-disc list-inside">
                     <li>Name pronunciation: <span className="text-emerald-400 font-semibold">Euchie Jn Pierre (You-Chee Juhn Pee-air)</span></li>
-                    <li><span className="text-slate-200 font-semibold">Saint Lucia — Taiwan</span>{" "} | Caribbean-born, with 12+ years of study and professional experience in Asia.</li>
-                    <li>Studied and worked in Asia for 12+ years; intermediate Mandarin speaker with strong cross-cultural adaptability.</li>
+                    <li><span className="text-slate-200 font-semibold">Saint Lucia — Taiwan</span>{" "} | Caribbean-born, with 12+ years of study and professional experience in Asia, bringing strong cross-cultural adaptability and intermediate Mandarin proficiency.</li>
                     <li>Passionate about translating complex data into practical insights for environmental, operational and risk decisions.</li>
                     <li>Outdoor enthusiast: long-distance cycling, mountain adventures, hiking, and nature walks — nature fuels creativity and resilience.</li>
                   </ul>
