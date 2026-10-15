@@ -24,7 +24,7 @@ import ecoPulseIndex from "./images/ecopulseindex.webp";
 import disruptionEcosystem from "./images/disruptionEcosystem.webp";
 import disruptionPressure from "./images/disruptionPressure.webp";
 //HSEQ
-import hseqERD from "./images/ERD_white.svg";
+import hseqArchitecture from "./images/operational_architecture.gif";
 
 export const RepoContent = {
   squidstack: {
@@ -319,42 +319,46 @@ export const RepoContent = {
 
   hseq: {
     title: "HSE Risk Intelligence",
-    tagline: "Operational Safety, Risk Engineering & Decision Intelligence",
+    tagline: "Operational HSE Decision Support & Risk Intelligence",
 
-    overview: "Models daily industrial operations as a structured risk intelligence system, connecting planning, task execution, hazards, controls, barriers, automation, and analytics.",
+    overview:
+      "Connects planning, field execution, observations, hazards, controls, incidents, corrective actions, emergency preparedness, and confirmed reporting in a traceable operational HSE system.",
 
-    usedFor: "Designed to monitor operational risk, evaluate control and barrier effectiveness, automate safety workflows, and generate structured, audit-ready risk intelligence.",
+    usedFor:
+      "Designed to structure field HSE evidence, preserve operational relationships, support follow-up and verification, and turn daily site records into management-ready information.",
 
     technical: [
-      "Relational HSE database (tasks, hazards, controls, incidents, workforce)",
-      "Dynamic risk engine (conditions + controls + barrier integrity)",
-      "Bowtie risk modeling (threats, barriers, consequences)",
-      "Barrier effectiveness scoring system",
-      "Event-driven automation (hazards, actions, validations)",
-      "Scenario simulation engine (what-if risk modelling)",
-      "KPI & analytics layer (leading + lagging indicators)",
-      "PostgreSQL + Streamlit architecture",
-      "ISO 45001-aligned governance framework"
+      "PostgreSQL relational architecture for operational HSE data",
+      "Guided Streamlit workflows for field data entry and review",
+      "Planned Work Packages, PTW, JSA, and Method Statement workflows",
+      "Task execution, attendance, PPE/control verification, and weather context",
+      "Observation → hazard → control traceability",
+      "Incident/event lifecycle with task and observation relationships",
+      "Corrective-action assignment, verification, and controlled closure",
+      "Emergency drill lifecycle and operational record linkage",
+      "Immutable daily management-report snapshots",
+      "Multi-site, zone-lineage, security, and approval foundations"
     ],
 
-    scenario: "Captures how risk emerges from real-world conditions, evaluates control and barrier performance, simulates failure scenarios, and drives corrective actions across industrial operations.",
+    scenario:
+      "Structures what happened on site, what risks and controls were identified, what incidents or follow-up occurred, and what management ultimately confirmed in the daily operational record.",
 
     plots: [
       {
-        title: "Risk Intelligence Architecture",
+        title: "Operational Risk Architecture",
         description:
-          "ERD showing full lifecycle from planning and execution to automation, bowtie modeling, risk scoring, and KPI analytics.",
-        src: hseqERD,
-        type: "svg"
+          "Animated view of how operational foundation, field work, risk detection, incident response, follow-up, and management reporting connect.",
+        src: hseqArchitecture,
+        type: "image"
       }
     ],
 
     insights: [
-      "Risk is dynamic and evolves during execution, not just planning.",
-      "Barrier integrity is a key driver of operational risk.",
-      "Automation ensures consistent hazard detection and response.",
-      "Simulation enables proactive decision-making before failure occurs.",
-      "Structured data enables audit-ready and AI-ready safety systems."
+      "Planned work and actual task execution need separate operational records.",
+      "Observations, hazards, controls, and incidents gain value when their relationships remain traceable.",
+      "Control presence is different from verified control effectiveness.",
+      "Corrective-action completion and verified closure are separate assurance stages.",
+      "Confirmed management records should remain historically reproducible."
     ],
 
     image: placeholderHSEQ,
@@ -362,53 +366,62 @@ export const RepoContent = {
     modules: [
       {
         name: "Decision Context",
-        detail: "Supports site managers, HSE officers, and executives in identifying high-risk activities, evaluating barrier integrity, and maintaining operational safety compliance."
+        detail:
+          "Connects site, workforce, planning, task execution, weather, and operational evidence so HSE records retain the context needed for review."
       },
       {
-        name: "System Design",
-        detail: "Built as a modular risk intelligence platform integrating task execution, hazard modeling (bowtie), control effectiveness, automation, simulation, and KPI analytics into a unified system."
+        name: "Risk & Assurance",
+        detail:
+          "Links observations, hazards, controls, incidents, and corrective actions while preserving human judgement and verification."
       },
       {
-        name: "Decision Impact",
-        detail: "Enables proactive risk mitigation, automated corrective action workflows, and data-driven decision-making across daily operations and long-term planning."
+        name: "Management Traceability",
+        detail:
+          "Supports controlled daily confirmation, immutable report snapshots, emergency preparedness records, and management-ready reporting."
       }
     ],
 
     links: [
       {
-        label: "HSE Risk Intelligence System",
-        subLabel: "Database & Architecture",
+        label: "HSE Risk Intelligence",
+        subLabel: "System & Architecture",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/",
-        description: "Core system showcasing database design, automation, risk modeling, and safety intelligence architecture.",
+        description:
+          "Version 1 operational HSE decision-support platform, database architecture, workflows, and roadmap.",
         flagship: true
       },
       {
         label: "Operations Manual",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/blob/main/docs/Database_Operations_Manual.md",
-        description: "Detailed documentation covering system logic, governance rules, automation, and risk workflows."
+        description:
+          "Detailed Version 1 documentation covering operational relationships, workflow rules, lifecycle controls, and reporting."
       }
     ],
 
     sideLinks: [
       {
-        label: "Entity Relationship Diagram (ERD)",
-        url: "https://github.com/Euchie23/HSEQ_Risk_Intel/#conceptual-risk-intelligence-model",
-        description: "Visual overview of how planning, execution, hazards, controls, automation, and analytics connect."
+        label: "Operational Architecture",
+        url: "https://github.com/Euchie23/HSEQ_Risk_Intel/#conceptual-operational-risk-model",
+        description:
+          "High-level view of how foundation, field operations, risk, incidents, follow-up, and reporting connect."
       },
       {
-        label: "How It Works (Non-Technical)",
+        label: "How It Works",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/blob/main/HOW_IT_WORKS.md",
-        description: "Step-by-step explanation of how the system captures, connects, and uses safety data."
+        description:
+          "Non-technical walkthrough of how field HSE information moves through the system."
       },
       {
         label: "Technical Case Study",
         url: "https://github.com/Euchie23/HSEQ_Risk_Intel/blob/main/Case_Study.md",
-        description: "Detailed breakdown of architecture, risk engine, automation, and simulation layers."
+        description:
+          "Problem framing, architecture decisions, implementation approach, limitations, and lessons learned."
       },
       {
         label: "Ask Your Questions",
         url: "mailto:euchiejnpierre@gmail.com",
-        description: "Reach out for walkthroughs, consulting discussions, or technical clarifications."
+        description:
+          "Reach out for walkthroughs, project discussions, or technical questions."
       }
     ]
   }

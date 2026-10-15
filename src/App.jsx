@@ -242,7 +242,7 @@ const App = () => {
         {/* META DESCRIPTION */}
         <meta
           name="description"
-          content="Applied Data Scientist specializing in decision intelligence, risk analytics, environmental data science, GIS, PostGIS, fisheries analytics, marine risk assessment, HSE risk systems, and operational decision-support tools."
+          content="Applied Data Scientist specializing in decision intelligence, risk analytics, environmental data science, GIS, PostGIS, fisheries analytics, marine risk assessment, and operational HSE decision-support tools."
         />
 
         {/* AUTHOR */}
@@ -265,7 +265,7 @@ const App = () => {
 
         <meta
           property="og:description"
-          content="Applied data science, decision intelligence, risk analytics, GIS, environmental intelligence, fisheries analytics, and operational HSE risk systems."
+          content="Applied data science, decision intelligence, risk analytics, GIS, environmental intelligence, fisheries analytics, and operational HSE decision-support systems."
         />
 
         <meta
@@ -539,7 +539,7 @@ const App = () => {
 
                     {/* Pillar 1: Industrial HSE-Q */}
                     <div className="flex flex-col space-y-3">
-                      <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Industrial HSE-Q</h3>
+                      <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Industrial HSE</h3>
                       <p className="text-slate-400 text-sm leading-relaxed">
                         Designing <span className="font-bold text-slate-200">ISO 45001</span> compliant architectures for Oil & Gas. Transforming field safety into <span className="font-bold text-slate-200">audit-ready risk intelligence</span> for high-stakes operations.
                       </p>
@@ -601,7 +601,7 @@ const App = () => {
                     HSE Risk Intelligence
                   </h3>
                   <p className="text-slate-400 text-sm mb-6">
-                    Decision-support tools for high-stakes safety and regulatory compliance in oil & gas.
+                    Operational HSE decision support for structured field reporting, risk traceability, assurance, and management review.
                   </p>
                   <BentoGrid
                     repos={hseRepos.reduce((obj, key) => {
