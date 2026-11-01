@@ -381,7 +381,7 @@ const App = () => {
 
                 {/* Quick Context / Location */}
                 <div className="flex flex-wrap gap-4 mb-16 text-slate-500 font-mono text-[15px] uppercase tracking-[0.2em]">
-                  <span>Environmental Data Analysis</span>
+                  <span>Environmental Data Analytics</span>
                   <span className="text-slate-800">|</span>
                   <span>Risk Analytics</span>
                   <span className="text-slate-800">|</span>
