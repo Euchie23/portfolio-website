@@ -235,14 +235,14 @@ const App = () => {
         {/* PRIMARY SEO TITLE */}
         <title>
 
-          Euchie Jn Pierre — Applied Data Scientist | Decision Intelligence & Risk Analytics
+          Euchie Jn Pierre — Applied Data Analyst | Decision Intelligence & Risk Analytics
 
         </title>
 
         {/* META DESCRIPTION */}
         <meta
           name="description"
-          content="Applied Data Scientist specializing in decision intelligence, risk analytics, environmental data science, GIS, PostGIS, fisheries analytics, marine risk assessment, and operational HSE decision-support tools."
+          content="Applied Data Analyst specializing in decision intelligence, risk analytics, environmental data analysis, GIS, PostGIS, fisheries analytics, marine risk assessment, and operational HSE decision-support tools."
         />
 
         {/* AUTHOR */}
@@ -260,12 +260,12 @@ const App = () => {
         {/* OPEN GRAPH */}
         <meta
           property="og:title"
-          content="Euchie Jn Pierre | Applied Data Scientist — Decision Intelligence & Risk Analytics"
+          content="Euchie Jn Pierre | Applied Data Analyst — Decision Intelligence & Risk Analytics"
         />
 
         <meta
           property="og:description"
-          content="Applied data science, decision intelligence, risk analytics, GIS, environmental intelligence, fisheries analytics, and operational HSE decision-support systems."
+          content="Applied data analysis, decision intelligence, risk analytics, GIS, environmental intelligence, fisheries analytics, and operational HSE decision-support systems."
         />
 
         <meta
@@ -289,12 +289,12 @@ const App = () => {
 
         <meta
           name="twitter:title"
-          content="Euchie Jn Pierre | Applied Data Scientist"
+          content="Euchie Jn Pierre | Applied Data Analyst"
         />
 
         <meta
           name="twitter:description"
-          content="Decision intelligence, risk analytics, environmental data science, GIS, fisheries analytics, marine risk, and operational HSE systems."
+          content="Decision intelligence, risk analytics, environmental data analysis, GIS, fisheries analytics, marine risk, and operational HSE systems."
         />
 
         <meta
@@ -311,7 +311,7 @@ const App = () => {
           "name": "Euchie Jn Pierre",
           "url": "https://euchie-portfolio.vercel.app/",
           "image": "https://euchie-portfolio.vercel.app/headshot.webp",
-          "jobTitle": "Applied Data Scientist | Decision Intelligence & Risk Analytics",
+          "jobTitle": "Applied Data Analyst | Decision Intelligence & Risk Analytics",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Saint Lucia",
@@ -322,10 +322,10 @@ const App = () => {
             "https://www.linkedin.com/in/euchiejnpierre/"
           ],
           "knowsAbout": [
-            "Data Science",
+            "Data Analysis",
             "Decision Intelligence",
             "Risk Analytics",
-            "Environmental Data Science",
+            "Environmental Data Analysis",
             "Geospatial Intelligence",
             "GIS",
             "PostGIS",
@@ -363,7 +363,7 @@ const App = () => {
                 </div>
                 <div className="text-center md:text-left">
                   <h1 className="text-5xl font-bold mb-2 tracking-tight">Euchie Jn Pierre</h1>
-                  <p className="text-slate-400 text-lg font-light italic">  Applied Data Scientist | Decision Intelligence & Risk Analytics </p>
+                  <p className="text-slate-400 text-lg font-light italic">  Applied Data Analyst | Decision Intelligence & Risk Analytics </p>
                   <div className="flex gap-4 mt-6 justify-center md:justify-start">
                     <a href="https://github.com/Euchie23" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors"><FaGithub size={22} /></a>
                     <a href="https://www.linkedin.com/in/euchiejnpierre/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors"><FaLinkedin size={22} /></a>
@@ -381,7 +381,7 @@ const App = () => {
 
                 {/* Quick Context / Location */}
                 <div className="flex flex-wrap gap-4 mb-16 text-slate-500 font-mono text-[15px] uppercase tracking-[0.2em]">
-                  <span>Environmental Data Science</span>
+                  <span>Environmental Data Analysis</span>
                   <span className="text-slate-800">|</span>
                   <span>Risk Analytics</span>
                   <span className="text-slate-800">|</span>
