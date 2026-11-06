@@ -376,7 +376,7 @@ const App = () => {
               <section className="max-w-6xl mx-auto px-6 mb-24 mt-16">
                 {/* The "Power Line" - Adjusted Size */}
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100 mb-10 leading-tight">
-                  I build <span className="text-emerald-400">data-driven decision-support systems</span> that turn complex environmental and operational data into <span className="text-emerald-400 italic">defensible insights for risk, planning, and high-stakes decisions</span>.
+                  I build <span className="text-emerald-400">data-driven analytical tools and decision-support applications</span> that transform complex environmental and operational data into <span className="text-emerald-400 italic">structured insights for risk assessment, planning, and informed decision making</span>.
                 </h2>
 
                 {/* Quick Context / Location */}
@@ -462,8 +462,8 @@ const App = () => {
                 </h3>
 
                 <p className="text-slate-400 text-sm mb-10 max-w-2xl leading-relaxed">
-                  A consistent pipeline guiding all projects — transforming raw environmental and operational data into structured,
-                  decision-ready intelligence. Read left to right: from data ingestion to stakeholder-facing tools.
+                  An analytical workflow applied across projects, illustrating how environmental and operational data can be collected, structured, 
+                  analyzed, and translated into decision-support applications.
                 </p>
 
                 {/* <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 overflow-x-auto"> */}
@@ -533,7 +533,7 @@ const App = () => {
                     <div className="flex flex-col space-y-3 lg:border-l lg:border-slate-800/40 lg:pl-10">
                       <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Spatial Intelligence</h3>
                       <p className="text-slate-400 text-sm leading-relaxed">
-                        Building <span className="font-bold text-slate-200">PostGIS & Python</span> pipelines. Modeling industrial <span className="font-bold text-slate-200">pollution plumes</span> and <span className="font-bold text-slate-200">biological hotspots</span> to identify spatial risk overlap.
+                        Developing <span className="font-bold text-slate-200">PostGIS, Python & R</span> interactive analytical dashboards to explore <span className="font-bold text-slate-200">spatial relationships, environmental hotspot mapping, and pollution plume modelling. </span>.
                       </p>
                     </div>
 
@@ -541,7 +541,7 @@ const App = () => {
                     <div className="flex flex-col space-y-3">
                       <h3 className="text-emerald-500 font-mono text-[15px] uppercase tracking-[0.3em] font-semibold">Industrial HSE</h3>
                       <p className="text-slate-400 text-sm leading-relaxed">
-                        Designing <span className="font-bold text-slate-200">ISO 45001</span> compliant architectures for Oil & Gas. Transforming field safety into <span className="font-bold text-slate-200">audit-ready risk intelligence</span> for high-stakes operations.
+                        Developing <span className="font-bold text-slate-200">interactive HSE tools</span> for <span className="font-bold text-slate-200">structured data entry, record traceability and risk reporting </span>.
                       </p>
 
                     </div>
